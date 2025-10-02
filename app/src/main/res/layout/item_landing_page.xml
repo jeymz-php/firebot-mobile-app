@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:paddingTop="100dp"
+    android:paddingBottom="180dp"
+    android:paddingHorizontal="40dp">
+
+    <ImageView
+        android:id="@+id/pageImage"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginBottom="40dp"
+        android:scaleType="fitCenter" />
+
+    <TextView
+        android:id="@+id/pageTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Early Detection"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        android:fontFamily="@font/poppins_extrabold"
+        android:layout_marginBottom="15dp"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/pageDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Detect fire, smoke &amp; gas leaks indoors\nfor early warning and safety."
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:fontFamily="@font/poppins_regular" />
+
+    <!-- Terms & Conditions - WHITE TEXT, BLUE LANG YUNG "Terms & Conditions" -->
+    <TextView
+        android:id="@+id/pageTerms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:text="By continuing you agree to our Terms &amp; Conditions"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:fontFamily="@font/poppins_light" />
+
+</LinearLayout>
