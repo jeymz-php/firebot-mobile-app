@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F2F2">
+
+    <!-- Notification bell -->
+    <ImageButton
+        android:id="@+id/btnNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Notifications"
+        android:src="@drawable/notification_bell" />
+
+    <!-- Logo and Title -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FireB"
+            android:textSize="60sp"
+            android:textStyle="bold"
+            android:textColor="#8E1616"
+            android:fontFamily="@font/poppins_bold" />
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="10dp"
+            android:contentDescription="Logo"
+            android:src="@drawable/firebot_logo_white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="T"
+            android:textSize="70sp"
+            android:textStyle="bold"
+            android:textColor="#8E1616"
+            android:fontFamily="@font/poppins_bold" />
+    </LinearLayout>
+
+    <!-- Grid of Buttons -->
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:alignmentMode="alignMargins"
+        android:columnCount="2"
+        android:rowCount="3"
+        android:rowOrderPreserved="false"
+        android:layout_marginTop="25dp">
+
+        <!-- LIVE MONITORING -->
+        <LinearLayout
+            style="@style/LandingButton"
+            android:id="@+id/btnLiveMonitoring">
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/laptop" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LIVE\nMONITORING"
+                style="@style/LandingText" />
+        </LinearLayout>
+
+        <!-- EXTINGUISHER MONITORING -->
+        <LinearLayout
+            style="@style/LandingButton"
+            android:id="@+id/btnExtinguisher">
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/fire_extinguisher" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EXTINGUISHER\nMONITORING"
+                style="@style/LandingText" />
+        </LinearLayout>
+
+        <!-- BATTERY MONITORING -->
+        <LinearLayout
+            style="@style/LandingButton"
+            android:id="@+id/btnBattery">
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/battery" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BATTERY\nMONITORING"
+                style="@style/LandingText" />
+        </LinearLayout>
+
+        <!-- HISTORY -->
+        <LinearLayout
+            style="@style/LandingButton"
+            android:id="@+id/btnHistory">
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/history" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HISTORY"
+                style="@style/LandingText" />
+        </LinearLayout>
+
+        <!-- LOGS -->
+        <LinearLayout
+            style="@style/LandingButton"
+            android:id="@+id/btnLogs">
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/files" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LOGS"
+                style="@style/LandingText" />
+        </LinearLayout>
+
+        <!-- SEND MESSAGE -->
+        <LinearLayout
+            style="@style/LandingButton"
+            android:id="@+id/btnSendMessage">
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/message" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SEND\nMESSAGE"
+                style="@style/LandingText" />
+        </LinearLayout>
+    </GridLayout>
+</RelativeLayout>

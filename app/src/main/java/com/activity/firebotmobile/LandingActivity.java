@@ -238,7 +238,11 @@ public class LandingActivity extends AppCompatActivity {
 
         builder.setPositiveButton("AGREE", (dialog, which) -> {
             dialog.dismiss();
+            Intent intent = new Intent(LandingActivity.this, SecondSplashActivity.class);
+            startActivity(intent);
+            finish();
         });
+
 
         builder.setNegativeButton("CLOSE", (dialog, which) -> {
             dialog.dismiss();

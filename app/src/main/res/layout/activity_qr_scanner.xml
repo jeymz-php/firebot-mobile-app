@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8E1616">
+
+    <!-- Close (X) button -->
+    <ImageButton
+        android:id="@+id/btnClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/close"
+        android:contentDescription="Close" />
+
+    <!-- Top Instruction Text -->
+    <TextView
+        android:id="@+id/tvInstruction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Align the QR code within the frame."
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center"
+        android:layout_marginTop="100dp" />
+
+    <!-- QR Frame with Scanner -->
+    <RelativeLayout
+        android:id="@+id/qrFrame"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:gravity="center">
+
+        <!-- The actual camera preview -->
+        <com.journeyapps.barcodescanner.BarcodeView
+            android:id="@+id/barcodeScannerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center" />
+
+        <!-- QR Frame overlay -->
+        <ImageView
+            android:id="@+id/qrOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/scanner"
+            android:scaleType="fitXY"
+            android:contentDescription="QR frame overlay" />
+    </RelativeLayout>
+
+
+    <!-- Bottom instruction -->
+    <TextView
+        android:id="@+id/tvBottomInstruction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Align the QR code within the frame."
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center"
+        android:layout_below="@id/qrFrame"
+        android:layout_marginTop="32dp" />
+
+    <!-- Continue button -->
+    <Button
+        android:id="@+id/btnContinue"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tvBottomInstruction"
+        android:layout_marginTop="24dp"
+        android:text="Continue"
+        android:textAllCaps="false"
+        android:background="@drawable/rounded_white_button"
+        android:textColor="#8E1616"
+        android:fontFamily="@font/poppins_semibold" />
+
+</RelativeLayout>

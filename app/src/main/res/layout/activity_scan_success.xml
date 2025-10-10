@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8E1616">
+
+    <!-- Close button -->
+    <ImageButton
+        android:id="@+id/btnClose"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/close"
+        android:contentDescription="Close" />
+
+    <!-- White card container -->
+    <LinearLayout
+        android:id="@+id/successCard"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="28dp"
+        android:layout_centerInParent="true"
+        android:translationY="20dp"
+        android:background="@drawable/white_rounded_bg"
+        android:elevation="6dp">
+
+        <!-- Green check icon -->
+        <ImageView
+            android:id="@+id/imgSuccess"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/success"
+            android:contentDescription="Success"
+            android:layout_marginBottom="18dp" />
+
+        <!-- Success text -->
+        <TextView
+            android:id="@+id/tvSuccess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Successfully\nScanned!"
+            android:textColor="#1E1E1E"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:fontFamily="@font/poppins_semibold"
+            android:lineSpacingExtra="2dp"
+            android:layout_marginBottom="18dp" />
+
+        <!-- Proceed button -->
+        <Button
+            android:id="@+id/btnProceed"
+            android:layout_width="180dp"
+            android:layout_height="48dp"
+            android:text="Proceed"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/proceed_button" />
+    </LinearLayout>
+
+</RelativeLayout>
