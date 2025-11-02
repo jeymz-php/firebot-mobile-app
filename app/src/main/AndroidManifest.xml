@@ -2,13 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.activity.firebotmobile">
 
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
 
-        <!-- Splash Activity - FIRST SCREEN -->
+        <!-- Splash Activity (Launcher) -->
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme"
@@ -19,15 +23,15 @@
             </intent-filter>
         </activity>
 
-        <!-- Landing Activity - SECOND SCREEN -->
-        <activity
-            android:name=".LandingActivity"
-            android:exported="false" />
-
-        <!-- Main Activity - THIRD SCREEN -->
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+        <activity android:name=".LandingActivity" />
+<!--        <activity android:name=".MainActivity" />-->
+        <activity android:name=".SecondSplashActivity" />
+        <activity android:name=".ScanIntroActivity" />
+        <activity android:name=".CameraPermissionActivity" />
+        <activity android:name=".QRScannerActivity" />
+        <activity android:name=".ScanSuccessActivity" />
+        <activity android:name=".SecondActivityLanding" />
 
     </application>
+
 </manifest>

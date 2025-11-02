@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8E1616"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp">
+
+    <!-- CAMERA ICON -->
+    <ImageView
+        android:id="@+id/cameraIcon"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:src="@drawable/camera"
+        android:layout_marginBottom="40dp"
+        android:contentDescription="Camera icon" />
+
+    <!-- TITLE -->
+    <TextView
+        android:id="@+id/permissionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Allow camera access to scan QR Code"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:fontFamily="@font/poppins_semibold"
+        android:layout_marginBottom="6dp" />
+
+    <!-- DESCRIPTION -->
+    <TextView
+        android:id="@+id/permissionDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This app needs access to your camera to scan QR codes."
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        android:gravity="center"
+        android:fontFamily="@font/poppins_regular"
+        android:layout_marginBottom="50dp" />
+
+    <!-- FOOTER TEXT -->
+    <TextView
+        android:id="@+id/permissionFooterTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You’re always in control"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:fontFamily="@font/poppins_semibold"
+        android:layout_marginBottom="6dp" />
+
+    <TextView
+        android:id="@+id/permissionFooterDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You can change this anytime in your device settings."
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        android:gravity="center"
+        android:fontFamily="@font/poppins_regular"
+        android:layout_marginBottom="36dp" />
+
+    <!-- BUTTON CONTAINER -->
+    <LinearLayout
+        android:id="@+id/buttonContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="2">
+
+        <!-- ALLOW BUTTON -->
+        <Button
+            android:id="@+id/btnAllow"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="Allow"
+            android:textColor="#8E1616"
+            android:fontFamily="@font/poppins_semibold"
+            android:background="@drawable/rounded_white_button"
+            android:layout_marginEnd="10dp"/>
+
+        <!-- DECLINE BUTTON -->
+        <Button
+            android:id="@+id/btnDecline"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="Decline"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/poppins_semibold"
+            android:background="@drawable/rounded_red_button"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8E1616"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!-- FIREBOT LOGO -->
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:src="@drawable/firebot_logo"
+            android:scaleType="fitCenter"
+            android:visibility="invisible" />
+
+        <!-- FIREBOT TEXT AND SUBTITLE -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!-- FIREBOT LETTERS -->
+            <LinearLayout
+                android:id="@+id/textContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/letterF"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="F"
+                    android:textColor="#FFFFFF"
+                    android:textSize="56sp"
+                    android:alpha="0"
+                    android:fontFamily="@font/poppins_extrabold" />
+
+                <TextView
+                    android:id="@+id/letterI"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="I"
+                    android:textColor="#FFFFFF"
+                    android:textSize="56sp"
+                    android:alpha="0"
+                    android:fontFamily="@font/poppins_extrabold" />
+
+                <TextView
+                    android:id="@+id/letterR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="R"
+                    android:textColor="#FFFFFF"
+                    android:textSize="56sp"
+                    android:alpha="0"
+                    android:fontFamily="@font/poppins_extrabold" />
+
+                <TextView
+                    android:id="@+id/letterE"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="E"
+                    android:textColor="#FFFFFF"
+                    android:textSize="56sp"
+                    android:alpha="0"
+                    android:fontFamily="@font/poppins_extrabold" />
+
+                <TextView
+                    android:id="@+id/letterB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="B"
+                    android:textColor="#FFFFFF"
+                    android:textSize="56sp"
+                    android:alpha="0"
+                    android:fontFamily="@font/poppins_extrabold" />
+
+                <TextView
+                    android:id="@+id/letterO"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="O"
+                    android:textColor="#FFFFFF"
+                    android:textSize="56sp"
+                    android:alpha="0"
+                    android:fontFamily="@font/poppins_extrabold" />
+
+                <TextView
+                    android:id="@+id/letterT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="T"
+                    android:textColor="#FFFFFF"
+                    android:textSize="56sp"
+                    android:alpha="0"
+                    android:fontFamily="@font/poppins_extrabold" />
+            </LinearLayout>
+
+            <!-- SUBTITLE -->
+            <TextView
+                android:id="@+id/splashSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Early warning &amp; instant action for \nsmarter fire protection."
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:layout_marginTop="6dp"
+                android:alpha="0"
+                android:fontFamily="@font/poppins_regular" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

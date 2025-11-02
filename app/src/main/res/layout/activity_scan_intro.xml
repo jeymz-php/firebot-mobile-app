@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8E1616"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <ImageView
+        android:id="@+id/qrIcon"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:src="@drawable/qr"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="QR icon" />
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Early warning &amp; instant action\nfor smarter fire protection"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins_semibold"
+        android:layout_marginBottom="6dp"/>
+
+    <TextView
+        android:id="@+id/subText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="One scan and we’re good to go."
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        android:gravity="center"
+        android:fontFamily="@font/poppins_regular"
+        android:layout_marginBottom="36dp"/>
+
+    <Button
+        android:id="@+id/scanButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Scan Me"
+        android:backgroundTint="#FFFFFF"
+        android:textColor="#8E1616"
+        android:fontFamily="@font/poppins_semibold"
+        android:background="@drawable/rounded_button"/>
+
+</LinearLayout>
