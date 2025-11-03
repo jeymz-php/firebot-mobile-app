@@ -11,25 +11,26 @@
         android:layout_height="56dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:paddingHorizontal="12dp"
-        android:background="#D32F2F">
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:background="#8E1616">
 
         <ImageButton
             android:id="@+id/btnBack"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@android:color/transparent"
-            android:src="@android:drawable/ic_media_previous"
-            android:tint="#fff"/>
+            android:src="@android:drawable/ic_media_previous" />
 
         <TextView
             android:id="@+id/tvThreadName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chat Thread"
+            android:text="Admin"
             android:textColor="#fff"
             android:textSize="18sp"
-            android:layout_marginStart="10dp"/>
+            android:layout_marginLeft="10dp"
+            android:fontFamily="sans-serif" />
     </LinearLayout>
 
     <!-- Chat Messages -->
@@ -58,14 +59,14 @@
             android:padding="10dp"
             android:background="@android:color/transparent"
             android:textColor="#000"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:fontFamily="sans-serif" />
 
         <ImageButton
             android:id="@+id/btnSend"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@android:color/transparent"
-            android:src="@android:drawable/ic_menu_send"
-            android:tint="#D32F2F" />
+            android:src="@drawable/send_red" />
     </LinearLayout>
 </LinearLayout>

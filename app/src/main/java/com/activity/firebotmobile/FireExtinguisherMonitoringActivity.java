@@ -38,6 +38,11 @@ public class FireExtinguisherMonitoringActivity extends AppCompatActivity {
         chatIcon = findViewById(R.id.nav_chat);
         logsIcon = findViewById(R.id.nav_logs);
 
+        // ADD THIS ONE LINE TO HIDE THE ACTION BAR
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+        
         if (backButton != null) {
             backButton.setOnClickListener(v -> finish());
         }

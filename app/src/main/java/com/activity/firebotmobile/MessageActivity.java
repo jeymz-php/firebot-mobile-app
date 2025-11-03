@@ -32,6 +32,11 @@ public class MessageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
 
+        // ADD THIS ONE LINE TO HIDE THE ACTION BAR
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         recyclerThreads = findViewById(R.id.recyclerThreads);
         recyclerThreads.setLayoutManager(new LinearLayoutManager(this));
 

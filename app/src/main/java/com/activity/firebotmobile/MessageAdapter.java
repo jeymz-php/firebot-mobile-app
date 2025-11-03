@@ -36,25 +36,40 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         holder.tvTime.setText(msg.getTime());
         holder.tvSender.setText(msg.getSender());
 
-        // Align messages: right for Admin, left for others
-        boolean isAdmin = msg.getSender().equalsIgnoreCase("Admin");
+        // Check if it's Admin or Semi
+        boolean isAdmin = msg.getSender().equalsIgnoreCase("Admin") ||
+                msg.getSender().equalsIgnoreCase("Semi");
 
-        // Set gravity for the message bubble
-        holder.container.setGravity(isAdmin ? Gravity.END : Gravity.START);
+        // Set gravity for the message container
+        holder.container.setGravity(isAdmin ? Gravity.START : Gravity.END);
 
         // Set background based on sender
-        holder.tvMessage.setBackgroundResource(isAdmin ?
-                R.drawable.bg_message_admin : R.drawable.bg_message_user);
+        if (isAdmin) {
+            holder.tvMessage.setBackgroundResource(R.drawable.bg_message_admin);
+            holder.tvHelp.setVisibility(View.VISIBLE);
+
+            // For Admin messages, show help text (bold responses)
+            if (msg.getMessage().contains("**")) {
+                String[] parts = msg.getMessage().split("\\*\\*");
+                if (parts.length >= 2) {
+                    holder.tvMessage.setText(parts[0].trim());
+                    holder.tvHelp.setText(parts[1].trim());
+                }
+            } else {
+                holder.tvHelp.setVisibility(View.GONE);
+            }
+        } else {
+            holder.tvMessage.setBackgroundResource(R.drawable.bg_message_user);
+            holder.tvHelp.setVisibility(View.GONE);
+        }
 
         // Align text inside message bubble
         holder.tvMessage.setTextAlignment(isAdmin ?
-                View.TEXT_ALIGNMENT_VIEW_END : View.TEXT_ALIGNMENT_VIEW_START);
-
-        // Optional: change sender text alignment too
+                View.TEXT_ALIGNMENT_VIEW_START : View.TEXT_ALIGNMENT_VIEW_END);
         holder.tvSender.setTextAlignment(isAdmin ?
-                View.TEXT_ALIGNMENT_VIEW_END : View.TEXT_ALIGNMENT_VIEW_START);
+                View.TEXT_ALIGNMENT_VIEW_START : View.TEXT_ALIGNMENT_VIEW_END);
         holder.tvTime.setTextAlignment(isAdmin ?
-                View.TEXT_ALIGNMENT_VIEW_END : View.TEXT_ALIGNMENT_VIEW_START);
+                View.TEXT_ALIGNMENT_VIEW_START : View.TEXT_ALIGNMENT_VIEW_END);
     }
 
     @Override
@@ -63,7 +78,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     }
 
     public static class MessageViewHolder extends RecyclerView.ViewHolder {
-        TextView tvMessage, tvTime, tvSender;
+        TextView tvMessage, tvTime, tvSender, tvHelp;
         LinearLayout container;
 
         public MessageViewHolder(@NonNull View itemView) {
@@ -71,6 +86,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             tvMessage = itemView.findViewById(R.id.tvMessage);
             tvTime = itemView.findViewById(R.id.tvTime);
             tvSender = itemView.findViewById(R.id.tvSender);
+            tvHelp = itemView.findViewById(R.id.tvHelp);
             container = itemView.findViewById(R.id.messageContainer);
         }
     }

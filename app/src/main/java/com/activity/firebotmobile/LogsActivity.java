@@ -56,6 +56,10 @@ public class LogsActivity extends AppCompatActivity {
             finish();
         });
 
+        // ADD THIS ONE LINE TO HIDE THE ACTION BAR
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
     }
 }

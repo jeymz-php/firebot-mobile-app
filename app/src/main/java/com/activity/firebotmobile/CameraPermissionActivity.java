@@ -26,6 +26,11 @@ public class CameraPermissionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera_permission);
 
+        // ADD THIS ONE LINE TO HIDE THE ACTION BAR
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         ImageView cameraIcon = findViewById(R.id.cameraIcon);
         TextView permissionTitle = findViewById(R.id.permissionTitle);
         TextView permissionDescription = findViewById(R.id.permissionDescription);

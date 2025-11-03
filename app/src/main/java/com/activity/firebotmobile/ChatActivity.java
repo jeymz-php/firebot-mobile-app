@@ -46,6 +46,11 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
+        // ADD THIS ONE LINE TO HIDE THE ACTION BAR
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+        
         recyclerMessages = findViewById(R.id.recyclerMessages);
         recyclerMessages.setLayoutManager(new LinearLayoutManager(this));
         messageAdapter = new MessageAdapter(messageList);

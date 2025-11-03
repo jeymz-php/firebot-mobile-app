@@ -18,6 +18,11 @@ public class ScanIntroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_intro);
 
+        // ADD THIS ONE LINE TO HIDE THE ACTION BAR
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         ImageView qrIcon = findViewById(R.id.qrIcon);
         TextView titleText = findViewById(R.id.titleText);
         TextView subText = findViewById(R.id.subText);

@@ -31,6 +31,11 @@ public class QRScannerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qr_scanner);
 
+        // ADD THIS ONE LINE TO HIDE THE ACTION BAR
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         barcodeScannerView = findViewById(R.id.barcodeScannerView);
         Button btnContinue = findViewById(R.id.btnContinue);
         ImageButton btnClose = findViewById(R.id.btnClose);

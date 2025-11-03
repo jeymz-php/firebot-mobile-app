@@ -6,33 +6,52 @@
     android:orientation="vertical"
     android:padding="8dp">
 
+    <!-- Sender Name -->
     <TextView
         android:id="@+id/tvSender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#666"
-        android:textSize="12sp"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp" />
+        android:textColor="#000"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:paddingBottom="4dp"
+        android:fontFamily="sans-serif" />
 
+    <!-- Message Content -->
     <TextView
         android:id="@+id/tvMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_message_user"
-        android:padding="10dp"
+        android:padding="12dp"
         android:textColor="#000"
         android:textSize="16sp"
-        android:layout_gravity="start"
-        android:maxWidth="280dp" /> <!-- Fixed here -->
+        android:maxWidth="280dp"
+        android:lineSpacingExtra="2dp"
+        android:fontFamily="sans-serif" />
 
+    <!-- Help Text (for Admin responses) -->
+    <TextView
+        android:id="@+id/tvHelp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:padding="12dp"
+        android:paddingTop="8dp"
+        android:maxWidth="280dp"
+        android:lineSpacingExtra="2dp"
+        android:fontFamily="sans-serif" />
+
+    <!-- Time -->
     <TextView
         android:id="@+id/tvTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#999"
-        android:textSize="10sp"
+        android:textColor="#666"
+        android:textSize="12sp"
         android:paddingTop="4dp"
-        android:layout_gravity="end" />
+        android:fontFamily="sans-serif" />
 
 </LinearLayout>
+

@@ -24,6 +24,11 @@ public class BatteryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battery);
 
+        // ADD THIS ONE LINE TO HIDE THE ACTION BAR
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         backButton = findViewById(R.id.backButton);
 
         notificationButton = findViewById(R.id.notificationButton);

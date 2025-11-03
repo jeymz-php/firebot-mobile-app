@@ -33,4 +33,7 @@
     <string name="content_description_chat">Chat Button</string>
     <string name="content_description_bell">Bell Button</string>
     <string name="content_description_location">Location Button</string>
+
+    <string name="back_button">Back</string>
+    <string name="send_button">Send Message</string>
 </resources>

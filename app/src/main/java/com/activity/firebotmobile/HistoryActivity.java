@@ -19,6 +19,11 @@ public class HistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
+        // ADD THIS ONE LINE TO HIDE THE ACTION BAR
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         // Header Buttons
         backButton = findViewById(R.id.backButton);
         notificationButton = findViewById(R.id.notificationButton);

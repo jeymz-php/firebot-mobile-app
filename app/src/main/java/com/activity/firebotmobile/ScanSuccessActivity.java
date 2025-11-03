@@ -18,6 +18,11 @@ public class ScanSuccessActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_success);
 
+        // ADD THIS ONE LINE TO HIDE THE ACTION BAR
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         ImageButton btnClose = findViewById(R.id.btnClose);
         Button btnProceed = findViewById(R.id.btnProceed);
         ImageView imgSuccess = findViewById(R.id.imgSuccess);

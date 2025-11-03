@@ -25,6 +25,11 @@ public class SecondSplashActivity extends AppCompatActivity {
 
         initializeViews();
         startAnimationSequence();
+
+        // ADD THIS ONE LINE TO HIDE THE ACTION BAR
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
     }
 
     private void initializeViews() {
