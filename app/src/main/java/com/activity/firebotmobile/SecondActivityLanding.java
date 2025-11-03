@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Toast; // Kept from remote branch
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SecondActivityLanding extends AppCompatActivity {
@@ -14,17 +15,18 @@ public class SecondActivityLanding extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.second_activity_landing);
 
-        // --- 1. Notification Button Setup (Existing Logic) ---
+        // --- 1. Notification Button Setup (Keeping local logic for bottom sheet) ---
         ImageButton notificationButton = findViewById(R.id.btnNotification);
 
         if (notificationButton != null) {
             notificationButton.setOnClickListener(v -> {
+                // Assuming NotificationsBottomSheetDialogFragment is available in your local branch
                 NotificationsBottomSheetDialogFragment bottomSheet = new NotificationsBottomSheetDialogFragment();
                 bottomSheet.show(getSupportFragmentManager(), NotificationsBottomSheetDialogFragment.TAG);
             });
         }
 
-        // --- 2. Live Monitoring Button Setup (Existing Logic) ---
+        // --- 2. Live Monitoring Button Setup (From local HEAD) ---
         LinearLayout btnLiveMonitoring = findViewById(R.id.btnLiveMonitoring);
 
         if (btnLiveMonitoring != null) {
@@ -37,7 +39,7 @@ public class SecondActivityLanding extends AppCompatActivity {
             });
         }
 
-        // --- 3. Extinguisher Button Setup (Existing Logic) ---
+        // --- 3. Extinguisher Button Setup (From local HEAD) ---
         View extinguisherButton = findViewById(R.id.btnExtinguisher);
 
         if (extinguisherButton != null) {
@@ -50,7 +52,7 @@ public class SecondActivityLanding extends AppCompatActivity {
             });
         }
 
-        // --- 4. History Button Setup (Existing Logic) ---
+        // --- 4. History Button Setup (From local HEAD) ---
         LinearLayout btnHistory = findViewById(R.id.btnHistory);
 
         if (btnHistory != null) {
@@ -63,7 +65,7 @@ public class SecondActivityLanding extends AppCompatActivity {
             });
         }
 
-        // --- 5. Battery Monitoring Button Setup (Existing Logic) 🔋 ---
+        // --- 5. Battery Monitoring Button Setup (From local HEAD) 🔋 ---
         LinearLayout btnBattery = findViewById(R.id.btnBattery);
 
         if (btnBattery != null) {
@@ -77,8 +79,7 @@ public class SecondActivityLanding extends AppCompatActivity {
             });
         }
 
-        // --- 6. Logs Button Setup (NEW LOGIC) 📝 ---
-        // Get the reference to the Logs layout/button view by its ID
+        // --- 6. Logs Button Setup (From local HEAD) 📝 ---
         LinearLayout btnLogs = findViewById(R.id.btnLogs);
 
         if (btnLogs != null) {
@@ -91,5 +92,12 @@ public class SecondActivityLanding extends AppCompatActivity {
                 }
             });
         }
+
+        // --- 7. Send Message Button Setup (From remote) ---
+        LinearLayout btnSendMessage = findViewById(R.id.btnSendMessage);
+        btnSendMessage.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MessageActivity.class);
+            startActivity(intent);
+        });
     }
 }
