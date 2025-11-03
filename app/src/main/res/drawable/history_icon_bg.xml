@@ -1,0 +1,5 @@
+<!-- res/drawable/history_icon_bg.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="#A40000"/>
+</shape>
