@@ -1,3 +1,36 @@
 <resources>
     <string name="app_name">Firebot</string>
+
+    <string name="refill_guide_steps">
+        Step 1 – Discharge all remaining pressure and extinguishing agent from the unit by pressing the handle or pull pin.\n
+        Step 2 – Carefully remove the valve assembly and siphon tube. Inspect the cylinder wall and tube for damage or corrosion.\n
+        Step 3 – Clean the cylinder thoroughly. Fill the cylinder with the specific extinguishing agent required (e.g., water, dry chemical).\n
+        Step 4 – Inspect all seals, gaskets, and O-rings. Replace any worn or damaged components to ensure a proper seal.\n
+        Step 5 – Reinstall the valve assembly and siphon tube, making sure the seal is tight. Place the unit in a proper charging device.\n
+        Step 6 – Pressurize the unit using nitrogen or dry air to the pressure specified on the label. Re-attach the safety seal and pin.
+    </string>
+    <string name="refill_guide_safety">
+        \u2022 Always wear protective gloves and goggles\n
+        \u2022 Work in a well-ventilated area\n
+        \u2022 Follow manufacturer specifications exactly\n
+        \u2022 Never refill near open flames
+    </string>
+
+    <string name="log_robot_started">Robot Started (System Check OK)\nAugust 19, 2025. 10:40 PM</string>
+    <string name="log_wifi_connected">Wi-Fi Connected\nAugust 19, 2025. 10:41 PM</string>
+    <string name="log_flame_triggered">Flame Sensor Triggered (Front)\nAugust 19, 2025. 10:41 PM</string>
+    <string name="log_camera_activated">Camera Streaming Activated\nAugust 19, 2025. 10:41 PM</string>
+    <string name="log_extinguisher_idle">Fire Extinguisher, Robot Idle\nAugust 19, 2025. 10:41 PM</string>
+    <string name="log_robot_activated_user">Robot Activated by User\nAugust 05, 2025. 3:00 PM</string>
+    <string name="log_gas_detected">Gas Detected\nAugust 05, 2025. 3:05 PM</string>
+
+    <string name="content_description_back">Navigate back to the previous screen</string>
+    <string name="content_description_notifications">View notification alerts</string>
+    <string name="content_description_history_icon">History Event Icon</string>
+    <string name="content_description_live_feed">Live Camera Feed</string>
+    <string name="content_description_volume">Volume Control</string>
+    <string name="content_description_fullscreen">Toggle Fullscreen</string>
+    <string name="content_description_chat">Chat Button</string>
+    <string name="content_description_bell">Bell Button</string>
+    <string name="content_description_location">Location Button</string>
 </resources>

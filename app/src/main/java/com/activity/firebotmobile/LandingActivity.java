@@ -216,7 +216,7 @@ public class LandingActivity extends AppCompatActivity {
     }
 
     private void proceedToMain() {
-        Intent intent = new Intent(LandingActivity.this, MainActivity.class);
+        Intent intent = new Intent(LandingActivity.this, SecondSplashActivity.class);
         startActivity(intent);
         finish();
     }

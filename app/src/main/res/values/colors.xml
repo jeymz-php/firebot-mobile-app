@@ -4,4 +4,10 @@
     <color name="colorPrimaryDark">#5E0E0E</color>
     <color name="colorAccent">#FF6B35</color>
     <color name="white">#FFFFFF</color>
+    <color name="black">#1F1F1F</color>
+    <color name="red_active">#A40000</color>
+
+    <color name="green_switch_thumb">#00FF00</color>
+    <color name="green_switch_track">#008000</color>
+    <color name="gray_switch_track">#A0A0A0</color>
 </resources>
