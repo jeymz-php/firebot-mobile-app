@@ -440,17 +440,18 @@
         </LinearLayout>
     </ScrollView>
 
+    <!-- Bottom Navigation -->
     <LinearLayout
         android:id="@+id/bottom_navigation_bar"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="#FFFFFF"
         android:orientation="horizontal"
-        android:weightSum="6"
+        android:weightSum="7"
         android:elevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:id="@+id/nav_live"
@@ -603,6 +604,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Logs"
+                android:textSize="10sp"
+                android:textColor="#000000"
+                android:fontFamily="@font/poppins_regular" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nav_profile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:paddingTop="4dp">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/person_icon"
+                app:tint="#000000"
+                android:contentDescription="Navigation Icon" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profile"
                 android:textSize="10sp"
                 android:textColor="#000000"
                 android:fontFamily="@font/poppins_regular" />

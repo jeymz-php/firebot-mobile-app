@@ -18,9 +18,7 @@ public class LogsActivity extends AppCompatActivity {
 
         findViewById(R.id.backButton).setOnClickListener(v -> finish());
 
-
         findViewById(R.id.notificationButton).setOnClickListener(v -> {
-
             NotificationsBottomSheetDialogFragment bottomSheet = new NotificationsBottomSheetDialogFragment();
             // notif bottom sheet
             bottomSheet.show(getSupportFragmentManager(), NotificationsBottomSheetDialogFragment.TAG);
@@ -56,10 +54,15 @@ public class LogsActivity extends AppCompatActivity {
             finish();
         });
 
+        findViewById(R.id.nav_profile).setOnClickListener(v -> {
+            Intent intent = new Intent(LogsActivity.this, ProfileActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
         // ADD THIS ONE LINE TO HIDE THE ACTION BAR
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
-
     }
 }

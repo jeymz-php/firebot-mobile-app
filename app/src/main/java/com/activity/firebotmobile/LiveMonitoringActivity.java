@@ -9,11 +9,10 @@ import androidx.appcompat.app.AppCompatActivity;
 public class LiveMonitoringActivity extends AppCompatActivity {
 
     // Bottom navigation
-    View liveIcon, fireIcon, batteryIcon, historyIcon, chatIcon, logsIcon;
+    View liveIcon, fireIcon, batteryIcon, historyIcon, chatIcon, logsIcon, profileIcon;
 
     // Header views
     ImageButton backButton, notificationButton;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +29,7 @@ public class LiveMonitoringActivity extends AppCompatActivity {
         historyIcon = findViewById(R.id.nav_history);
         chatIcon = findViewById(R.id.nav_chat);
         logsIcon = findViewById(R.id.nav_logs);
+        profileIcon = findViewById(R.id.nav_profile);
 
         // ADD THIS ONE LINE TO HIDE THE ACTION BAR
         if (getSupportActionBar() != null) {
@@ -47,7 +47,6 @@ public class LiveMonitoringActivity extends AppCompatActivity {
                 bottomSheet.show(getSupportFragmentManager(), NotificationsBottomSheetDialogFragment.TAG);
             });
         }
-
 
         // navigation
         liveIcon.setOnClickListener(v -> {
@@ -75,6 +74,11 @@ public class LiveMonitoringActivity extends AppCompatActivity {
 
         logsIcon.setOnClickListener(v -> {
             startActivity(new Intent(this, LogsActivity.class));
+            finish();
+        });
+
+        profileIcon.setOnClickListener(v -> {
+            startActivity(new Intent(this, ProfileActivity.class));
             finish();
         });
     }

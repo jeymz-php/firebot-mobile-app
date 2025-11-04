@@ -10,10 +10,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.fragment.app.DialogFragment;
 
-
 public class FireExtinguisherMonitoringActivity extends AppCompatActivity {
 
-    View liveIcon, fireIcon, batteryIcon, historyIcon, chatIcon, logsIcon;
+    View liveIcon, fireIcon, batteryIcon, historyIcon, chatIcon, logsIcon, profileIcon;
 
     // Header views
     ImageButton backButton, notificationButton;
@@ -37,12 +36,13 @@ public class FireExtinguisherMonitoringActivity extends AppCompatActivity {
         historyIcon = findViewById(R.id.nav_history);
         chatIcon = findViewById(R.id.nav_chat);
         logsIcon = findViewById(R.id.nav_logs);
+        profileIcon = findViewById(R.id.nav_profile);
 
         // ADD THIS ONE LINE TO HIDE THE ACTION BAR
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
-        
+
         if (backButton != null) {
             backButton.setOnClickListener(v -> finish());
         }
@@ -92,6 +92,10 @@ public class FireExtinguisherMonitoringActivity extends AppCompatActivity {
             startActivity(new Intent(this, LogsActivity.class));
             finish();
         });
-    }
 
+        profileIcon.setOnClickListener(v -> {
+            startActivity(new Intent(this, ProfileActivity.class));
+            finish();
+        });
+    }
 }

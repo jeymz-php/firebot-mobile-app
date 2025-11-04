@@ -31,7 +31,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LandingActivity" /> <activity android:name=".SecondSplashActivity" />
+        <activity android:name=".LandingActivity" />
+        <activity android:name=".SecondSplashActivity" />
         <activity android:name=".ScanIntroActivity" />
         <activity android:name=".CameraPermissionActivity" />
         <activity android:name=".QRScannerActivity" />
@@ -42,6 +43,8 @@
         <activity android:name=".HistoryActivity"/>
         <activity android:name=".BatteryActivity"/>
         <activity android:name=".LogsActivity"/>
+        <activity android:name=".ProfileActivity"/>
+
     </application>
 
 </manifest>

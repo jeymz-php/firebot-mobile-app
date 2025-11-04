@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:gravity="center_vertical">
 
         <TextView
@@ -66,10 +66,11 @@
         android:layout_centerInParent="true"
         android:alignmentMode="alignMargins"
         android:columnCount="2"
-        android:rowCount="3"
+        android:rowCount="4"
         android:rowOrderPreserved="false"
-        android:layout_marginTop="25dp">
+        android:layout_marginTop="40dp">
 
+        <!-- Row 1 -->
         <!-- LIVE MONITORING -->
         <LinearLayout
             style="@style/LandingButton"
@@ -100,6 +101,7 @@
                 style="@style/LandingText" />
         </LinearLayout>
 
+        <!-- Row 2 -->
         <!-- BATTERY MONITORING -->
         <LinearLayout
             style="@style/LandingButton"
@@ -130,6 +132,7 @@
                 style="@style/LandingText" />
         </LinearLayout>
 
+        <!-- Row 3 -->
         <!-- LOGS -->
         <LinearLayout
             style="@style/LandingButton"
@@ -159,5 +162,26 @@
                 android:text="SEND\nMESSAGE"
                 style="@style/LandingText" />
         </LinearLayout>
+
+        <!-- Row 4 - PROFILE ONLY (NAKAGITNA) -->
+        <!-- PROFILE (SPANS BOTH COLUMNS AND CENTERED) -->
+        <LinearLayout
+            style="@style/LandingButton"
+            android:id="@+id/btnProfile"
+            android:layout_row="3"
+            android:layout_column="0"
+            android:layout_columnSpan="2"
+            android:layout_gravity="center">
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/person_icon" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PROFILE"
+                style="@style/LandingText" />
+        </LinearLayout>
+
     </GridLayout>
 </RelativeLayout>

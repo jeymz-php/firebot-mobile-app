@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class BatteryActivity extends AppCompatActivity {
 
-    View liveIcon, fireIcon, batteryIcon, historyIcon, chatIcon, logsIcon;
+    View liveIcon, fireIcon, batteryIcon, historyIcon, chatIcon, logsIcon, profileIcon;
 
     // Header views
     ImageButton backButton, notificationButton;
@@ -56,6 +56,7 @@ public class BatteryActivity extends AppCompatActivity {
         historyIcon = findViewById(R.id.nav_history);
         chatIcon = findViewById(R.id.nav_chat);
         logsIcon = findViewById(R.id.nav_logs);
+        profileIcon = findViewById(R.id.nav_profile);
 
         liveIcon.setOnClickListener(v ->
                 startActivity(new Intent(this, LiveMonitoringActivity.class))
@@ -79,6 +80,10 @@ public class BatteryActivity extends AppCompatActivity {
 
         logsIcon.setOnClickListener(v ->
                 startActivity(new Intent(this, LogsActivity.class))
+        );
+
+        profileIcon.setOnClickListener(v ->
+                startActivity(new Intent(this, ProfileActivity.class))
         );
     }
 }

@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.Toast; // Kept from remote branch
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SecondActivityLanding extends AppCompatActivity {
@@ -97,6 +97,13 @@ public class SecondActivityLanding extends AppCompatActivity {
         LinearLayout btnSendMessage = findViewById(R.id.btnSendMessage);
         btnSendMessage.setOnClickListener(v -> {
             Intent intent = new Intent(this, MessageActivity.class);
+            startActivity(intent);
+        });
+
+        // --- PROFILE BUTTON SETUP ---
+        LinearLayout btnProfile = findViewById(R.id.btnProfile);
+        btnProfile.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
         });
     }

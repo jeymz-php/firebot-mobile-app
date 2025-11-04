@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class HistoryActivity extends AppCompatActivity {
 
-    View liveIcon, fireIcon, batteryIcon, historyIcon, chatIcon, logsIcon;
+    View liveIcon, fireIcon, batteryIcon, historyIcon, chatIcon, logsIcon, profileIcon;
     ImageView backButton, notificationButton;
 
     @Override
@@ -43,6 +43,7 @@ public class HistoryActivity extends AppCompatActivity {
         historyIcon = findViewById(R.id.nav_history);
         chatIcon = findViewById(R.id.nav_chat);
         logsIcon = findViewById(R.id.nav_logs);
+        profileIcon = findViewById(R.id.nav_profile);
 
         // navigation
         liveIcon.setOnClickListener(v ->
@@ -67,6 +68,10 @@ public class HistoryActivity extends AppCompatActivity {
 
         logsIcon.setOnClickListener(v ->
                 startActivity(new Intent(this, LogsActivity.class))
+        );
+
+        profileIcon.setOnClickListener(v ->
+                startActivity(new Intent(this, ProfileActivity.class))
         );
 
         // for the DialogFragment
