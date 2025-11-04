@@ -31,7 +31,7 @@ public class QRScannerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qr_scanner);
 
-        // ADD THIS ONE LINE TO HIDE THE ACTION BAR
+        // Hide the action bar
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
@@ -45,10 +45,10 @@ public class QRScannerActivity extends AppCompatActivity {
                 new DefaultDecoderFactory(Collections.singletonList(BarcodeFormat.QR_CODE))
         );
 
-        // Check camera permission first
+        // Check camera permission
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 == PackageManager.PERMISSION_GRANTED) {
-            startCamera(); // start scanning
+            startCamera();
         } else {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.CAMERA},
@@ -57,10 +57,15 @@ public class QRScannerActivity extends AppCompatActivity {
 
         btnContinue.setOnClickListener(v -> {
             if (scannedText != null) {
-                Intent intent = new Intent(QRScannerActivity.this, ScanSuccessActivity.class);
-                intent.putExtra("qr_result", scannedText);
-                startActivity(intent);
-                finish();
+                // Validate scanned QR
+                if (scannedText.startsWith("FireBOT_User") || scannedText.startsWith("FireBOT_Device")) {
+                    Intent intent = new Intent(QRScannerActivity.this, ScanSuccessActivity.class);
+                    intent.putExtra("qr_result", scannedText);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(this, "Invalid QR Code. Only FireBOT codes are accepted.", Toast.LENGTH_LONG).show();
+                }
             } else {
                 Toast.makeText(this, "Please scan a QR code first.", Toast.LENGTH_SHORT).show();
             }
@@ -78,7 +83,7 @@ public class QRScannerActivity extends AppCompatActivity {
         @Override
         public void barcodeResult(BarcodeResult result) {
             if (result.getText() != null && !result.getText().equals(scannedText)) {
-                scannedText = result.getText();
+                scannedText = result.getText().replace("\\n", "\n"); // 👈 this converts literal \n to newline
                 Toast.makeText(QRScannerActivity.this,
                         "QR Scanned: " + scannedText, Toast.LENGTH_SHORT).show();
             }
@@ -100,7 +105,6 @@ public class QRScannerActivity extends AppCompatActivity {
         barcodeScannerView.pause();
     }
 
-    // Handle permission result
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
