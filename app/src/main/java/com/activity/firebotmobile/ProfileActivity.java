@@ -8,6 +8,16 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -126,22 +136,64 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void forgetRobot() {
-        // Dito ilalagay ang actual logic para i-forget/delete ang robot
-        // Halimbawa:
+        String deviceId = profileDeviceId.getText().toString().trim();
+        String userId = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+                .getString("user_id", null);
 
-        // 1. I-clear ang shared preferences o local database
-        // SharedPreferences preferences = getSharedPreferences("RobotPrefs", MODE_PRIVATE);
-        // preferences.edit().clear().apply();
+        if (userId == null) {
+            Toast.makeText(this, "User not logged in.", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        // 2. I-disconnect ang Bluetooth/WiFi connection
-        // disconnectFromRobot();
+        String apiUrl = "https://firebot.ucc-bsit.org/firebot/api/reset_qr.php";
 
-        // 3. Magpakita ng success message
-        showForgetRobotSuccessDialog();
+        new Thread(() -> {
+            try {
+                URL url = new URL(apiUrl);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("POST");
+                conn.setDoOutput(true);
+                conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 
-        // 4. Balik sa main screen o setup screen
-        // startActivity(new Intent(this, SetupActivity.class));
-        // finish();
+                String postData = "device_id=" + URLEncoder.encode(deviceId, "UTF-8")
+                        + "&user_id=" + URLEncoder.encode(userId, "UTF-8");
+
+                OutputStream os = conn.getOutputStream();
+                os.write(postData.getBytes());
+                os.flush();
+                os.close();
+
+                int responseCode = conn.getResponseCode();
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    StringBuilder response = new StringBuilder();
+                    String line;
+                    while ((line = in.readLine()) != null) {
+                        response.append(line);
+                    }
+                    in.close();
+
+                    JSONObject jsonResponse = new JSONObject(response.toString());
+                    runOnUiThread(() -> {
+                        if (jsonResponse.optString("status").equals("success")) {
+                            showForgetRobotSuccessDialog();
+                        } else {
+                            Toast.makeText(this, "Error: " + jsonResponse.optString("message"), Toast.LENGTH_LONG).show();
+                        }
+                    });
+                } else {
+                    runOnUiThread(() ->
+                            Toast.makeText(this, "Server error: " + responseCode, Toast.LENGTH_LONG).show()
+                    );
+                }
+                conn.disconnect();
+            } catch (Exception e) {
+                e.printStackTrace();
+                runOnUiThread(() ->
+                        Toast.makeText(this, "Network error: " + e.getMessage(), Toast.LENGTH_LONG).show()
+                );
+            }
+        }).start();
     }
 
     private void showForgetRobotSuccessDialog() {
