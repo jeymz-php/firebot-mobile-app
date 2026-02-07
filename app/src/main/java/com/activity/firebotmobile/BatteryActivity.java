@@ -50,7 +50,7 @@ public class BatteryActivity extends AppCompatActivity {
         lastChargedValue = findViewById(R.id.last_charged_value);
 
         // bottom nav
-        liveIcon = findViewById(R.id.nav_live);
+        liveIcon = findViewById(R.id.nav_monitoring);
         fireIcon = findViewById(R.id.nav_fire);
         batteryIcon = findViewById(R.id.nav_battery);
         historyIcon = findViewById(R.id.nav_history);

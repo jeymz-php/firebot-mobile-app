@@ -37,7 +37,7 @@ public class HistoryActivity extends AppCompatActivity {
         });
 
         //nav bottom
-        liveIcon = findViewById(R.id.nav_live);
+        liveIcon = findViewById(R.id.nav_monitoring);
         fireIcon = findViewById(R.id.nav_fire);
         batteryIcon = findViewById(R.id.nav_battery);
         historyIcon = findViewById(R.id.nav_history);

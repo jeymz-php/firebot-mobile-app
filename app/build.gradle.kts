@@ -39,6 +39,10 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
     implementation(libs.volley)
+
+    // FIX: Added CircleImageView dependency to resolve layout errors
+    implementation("de.hdodenhof:circleimageview:3.1.0")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

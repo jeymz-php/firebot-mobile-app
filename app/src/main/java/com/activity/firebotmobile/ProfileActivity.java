@@ -54,7 +54,7 @@ public class ProfileActivity extends AppCompatActivity {
         profileDeviceModel = findViewById(R.id.profile_device_model);
 
         // Bottom navigation
-        liveIcon = findViewById(R.id.nav_live);
+        liveIcon = findViewById(R.id.nav_monitoring);
         fireIcon = findViewById(R.id.nav_fire);
         batteryIcon = findViewById(R.id.nav_battery);
         historyIcon = findViewById(R.id.nav_history);

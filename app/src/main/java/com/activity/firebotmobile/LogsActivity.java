@@ -24,7 +24,7 @@ public class LogsActivity extends AppCompatActivity {
             bottomSheet.show(getSupportFragmentManager(), NotificationsBottomSheetDialogFragment.TAG);
         });
 
-        findViewById(R.id.nav_live).setOnClickListener(v -> {
+        findViewById(R.id.nav_monitoring).setOnClickListener(v -> {
             Intent intent = new Intent(LogsActivity.this, LiveMonitoringActivity.class);
             startActivity(intent);
             finish();

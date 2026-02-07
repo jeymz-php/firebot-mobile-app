@@ -29,7 +29,6 @@
             android:padding="8dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_arrow_back"
-            android:layout_marginTop="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:tint="#FFFFFF" />
@@ -43,7 +42,6 @@
             android:padding="8dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_bell"
-            android:layout_marginTop="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/back_button"
             app:tint="#000000" />
@@ -65,55 +63,14 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/camera_feed_image"
+    <Space
+        android:id="@+id/camera_space_placeholder"
         android:layout_width="0dp"
         android:layout_height="220dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp"
-        android:scaleType="centerInside"
-        android:contentDescription="Live Camera Feed"
-        android:background="@drawable/rounded_card_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header_layout" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:padding="8dp"
-        app:layout_constraintTop_toTopOf="@id/camera_feed_image"
-        app:layout_constraintBottom_toBottomOf="@id/camera_feed_image"
-        app:layout_constraintStart_toStartOf="@id/camera_feed_image"
-        app:layout_constraintEnd_toEndOf="@id/camera_feed_image">
-
-        <ImageButton
-            android:id="@+id/volume_button"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/rounded_dark_button_bg"
-            android:src="@drawable/ic_volume_up"
-            android:contentDescription="Volume"
-            android:scaleType="fitCenter"
-            android:padding="8dp"  app:tint="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/fullscreen_button"
-            android:layout_marginBottom="8dp"/>
-
-        <ImageButton
-            android:id="@+id/fullscreen_button"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/rounded_dark_button_bg"
-            android:src="@drawable/ic_fullscreen"
-            android:contentDescription="Fullscreen"
-            android:scaleType="fitCenter"
-            android:padding="8dp"  app:tint="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/quick_action_buttons"
@@ -123,7 +80,7 @@
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/camera_feed_image">
+        app:layout_constraintTop_toBottomOf="@id/camera_space_placeholder">
 
         <ImageButton
             android:id="@+id/chat_button_small"
@@ -179,9 +136,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="10dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="0dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="6dp"
         app:cardBackgroundColor="#A40000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -191,75 +148,180 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="20dp">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Real-Time Updates"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/poppins_bold"
-                android:layout_marginBottom="8dp" />
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/live_indicator_dot"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:background="@drawable/circle_white"
+                    android:layout_marginEnd="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="REAL-TIME UPDATES"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:letterSpacing="0.1"
+                    android:fontFamily="@font/poppins_bold"
+                    android:alpha="0.9" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="8dp">
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_fire2"
-                    android:contentDescription="Flame Icon"
-                    app:tint="#FFFFFF"
-                    android:layout_marginEnd="8dp" />
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_marginBottom="12dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/icon_flame"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_fire2"
+                        app:tint="#FFFFFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/icon_flame"
+                        android:layout_marginStart="12dp"
+                        android:text="FLAME SENSOR"
+                        android:textColor="#FFCDD2"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/poppins_bold" />
+
+                    <TextView
+                        android:id="@+id/status_badge_flame"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="DANGER"
+                        android:textColor="#FFFFFF"
+                        android:background="#40000000"
+                        android:paddingHorizontal="6dp"
+                        android:paddingVertical="2dp"
+                        android:textSize="9sp"
+                        android:fontFamily="@font/poppins_bold" />
+                </RelativeLayout>
+
                 <TextView
                     android:id="@+id/update_flame"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Flame: Active (Fire Detected at 30°)"
+                    android:layout_marginTop="8dp"
+                    android:text="Fire Detected at 30°"
                     android:textColor="#FFFFFF"
-                    android:textSize="14sp"
+                    android:textSize="15sp"
                     android:fontFamily="@font/poppins_regular" />
+
+                <View
+                    android:id="@+id/flame_bar_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="8dp"
+                    android:background="#33FFFFFF" />
+                <View
+                    android:id="@+id/flame_intensity_bar"
+                    android:layout_width="200dp"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="-4dp"
+                    android:background="#FFFFFF" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_gas_smoke"
-                    android:contentDescription="Gas/Smoke Icon"
-                    app:tint="#FFFFFF"
-                    android:layout_marginEnd="8dp" />
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_marginBottom="8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/icon_gas"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_gas_smoke"
+                        app:tint="#FFFFFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/icon_gas"
+                        android:layout_marginStart="12dp"
+                        android:text="GAS SENSOR"
+                        android:textColor="#FFCDD2"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/poppins_bold" />
+
+                    <TextView
+                        android:id="@+id/status_badge_gas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="CRITICAL"
+                        android:textColor="#FFFFFF"
+                        android:background="#40000000"
+                        android:paddingHorizontal="6dp"
+                        android:paddingVertical="2dp"
+                        android:textSize="9sp"
+                        android:fontFamily="@font/poppins_bold" />
+                </RelativeLayout>
+
                 <TextView
                     android:id="@+id/update_gas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Gas: Gas Detected at 1,000 ppm"
+                    android:layout_marginTop="8dp"
+                    android:text="1,000 ppm"
                     android:textColor="#FFFFFF"
-                    android:textSize="14sp"
+                    android:textSize="15sp"
                     android:fontFamily="@font/poppins_regular" />
+
+                <View
+                    android:id="@+id/gas_bar_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="8dp"
+                    android:background="#33FFFFFF" />
+                <View
+                    android:id="@+id/gas_intensity_bar"
+                    android:layout_width="250dp"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="-4dp"
+                    android:background="#FFFFFF" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/last_updated_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="System Syncing: Just Now"
+                android:textColor="#FFCDD2"
+                android:textSize="10sp"
+                android:alpha="0.7"
+                android:fontFamily="@font/poppins_regular" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/realtime_updates_card"
-        app:layout_constraintBottom_toTopOf="@id/bottom_navigation_bar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"      />
-
-    <!-- Bottom Navigation -->
     <LinearLayout
         android:id="@+id/bottom_navigation_bar"
         android:layout_width="0dp"
@@ -268,13 +330,14 @@
         android:orientation="horizontal"
         android:weightSum="7"
         android:elevation="8dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <!-- LIVE - CHANGE TO RED -->
         <LinearLayout
-            android:id="@+id/nav_live"
+            android:id="@+id/nav_monitoring"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -282,184 +345,154 @@
             android:gravity="center"
             android:clickable="true"
             android:focusable="true"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:paddingTop="4dp">
+            android:background="?attr/selectableItemBackgroundBorderless">
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_live_default"
-                app:tint="#A40000"
-                android:contentDescription="Navigation Icon" />
+                app:tint="#A40000" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Live"
-                android:textSize="10sp"
+                android:text="Monitoring"
+                android:textSize="9sp"
                 android:textColor="#A40000"
-            android:fontFamily="@font/poppins_regular" />
+                android:fontFamily="@font/poppins_regular"
+                android:includeFontPadding="false" />
         </LinearLayout>
 
-        <!-- FIRE - KEEP BLACK -->
         <LinearLayout
             android:id="@+id/nav_fire"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:gravity="center"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:paddingTop="4dp">
+            android:gravity="center">
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_fire_extinguisher"
-                app:tint="#000000"
-                android:contentDescription="Navigation Icon" />
+                app:tint="#000000" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Fire"
-                android:textSize="10sp"
+                android:textSize="9sp"
                 android:textColor="#000000"
-                android:fontFamily="@font/poppins_regular" />
+                android:fontFamily="@font/poppins_regular"
+                android:includeFontPadding="false" />
         </LinearLayout>
 
-        <!-- BATTERY - KEEP BLACK -->
         <LinearLayout
             android:id="@+id/nav_battery"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:gravity="center"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:paddingTop="4dp">
+            android:gravity="center">
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_battery_default"
-                app:tint="#000000"
-                android:contentDescription="Navigation Icon" />
+                app:tint="#000000" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Battery"
-                android:textSize="10sp"
+                android:textSize="9sp"
                 android:textColor="#000000"
-                android:fontFamily="@font/poppins_regular" />
+                android:fontFamily="@font/poppins_regular"
+                android:includeFontPadding="false" />
         </LinearLayout>
 
-        <!-- HISTORY - KEEP BLACK -->
         <LinearLayout
             android:id="@+id/nav_history"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:gravity="center"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:paddingTop="4dp">
+            android:gravity="center">
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_history_default"
-                app:tint="#000000"
-                android:contentDescription="Navigation Icon" />
+                app:tint="#000000" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="History"
-                android:textSize="10sp"
+                android:textSize="9sp"
                 android:textColor="#000000"
-                android:fontFamily="@font/poppins_regular" />
+                android:fontFamily="@font/poppins_regular"
+                android:includeFontPadding="false" />
         </LinearLayout>
 
-        <!-- CHAT - KEEP BLACK -->
         <LinearLayout
             android:id="@+id/nav_chat"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:gravity="center"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:paddingTop="4dp">
+            android:gravity="center">
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_chat_default"
-                app:tint="#000000"
-                android:contentDescription="Navigation Icon" />
+                app:tint="#000000" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Chat"
-                android:textSize="10sp"
+                android:textSize="9sp"
                 android:textColor="#000000"
-                android:fontFamily="@font/poppins_regular" />
+                android:fontFamily="@font/poppins_regular"
+                android:includeFontPadding="false" />
         </LinearLayout>
 
-        <!-- LOGS - KEEP BLACK -->
         <LinearLayout
             android:id="@+id/nav_logs"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:gravity="center"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:paddingTop="4dp">
+            android:gravity="center">
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_logs_default"
-                app:tint="#000000"
-                android:contentDescription="Navigation Icon" />
+                app:tint="#000000" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Logs"
-                android:textSize="10sp"
+                android:textSize="9sp"
                 android:textColor="#000000"
-                android:fontFamily="@font/poppins_regular" />
+                android:fontFamily="@font/poppins_regular"
+                android:includeFontPadding="false" />
         </LinearLayout>
 
-        <!-- PROFILE - KEEP BLACK -->
         <LinearLayout
             android:id="@+id/nav_profile"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:gravity="center"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:paddingTop="4dp">
+            android:gravity="center">
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/person_icon"
-                app:tint="#000000"
-                android:contentDescription="Navigation Icon" />
+                app:tint="#000000" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Profile"
-                android:textSize="10sp"
+                android:textSize="9sp"
                 android:textColor="#000000"
-                android:fontFamily="@font/poppins_regular" />
+                android:fontFamily="@font/poppins_regular"
+                android:includeFontPadding="false" />
         </LinearLayout>
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

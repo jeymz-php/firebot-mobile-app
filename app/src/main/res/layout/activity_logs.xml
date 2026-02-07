@@ -531,12 +531,14 @@
         android:orientation="horizontal"
         android:weightSum="7"
         android:elevation="8dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
-            android:id="@+id/nav_live"
+            android:id="@+id/nav_monitoring"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -555,10 +557,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Live"
-                android:textSize="10sp"
+                android:text="Monitoring"
+                android:textSize="9sp"
                 android:textColor="#000000"
-                android:fontFamily="@font/poppins_regular" />
+                android:fontFamily="@font/poppins_regular"
+                android:includeFontPadding="false" />
         </LinearLayout>
 
         <LinearLayout
@@ -582,9 +585,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Fire"
-                android:textSize="10sp"
+                android:textSize="9sp"
                 android:textColor="#000000"
-                android:fontFamily="@font/poppins_regular" />
+                android:fontFamily="@font/poppins_regular"
+                android:includeFontPadding="false" />
         </LinearLayout>
 
         <LinearLayout
@@ -608,9 +612,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Battery"
-                android:textSize="10sp"
+                android:textSize="9sp"
                 android:textColor="#000000"
-                android:fontFamily="@font/poppins_regular" />
+                android:fontFamily="@font/poppins_regular"
+                android:includeFontPadding="false" />
         </LinearLayout>
 
         <LinearLayout
@@ -634,9 +639,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="History"
-                android:textSize="10sp"
+                android:textSize="9sp"
                 android:textColor="#000000"
-                android:fontFamily="@font/poppins_regular" />
+                android:fontFamily="@font/poppins_regular"
+                android:includeFontPadding="false" />
         </LinearLayout>
 
         <LinearLayout
@@ -660,9 +666,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Chat"
-                android:textSize="10sp"
+                android:textSize="9sp"
                 android:textColor="#000000"
-                android:fontFamily="@font/poppins_regular" />
+                android:fontFamily="@font/poppins_regular"
+                android:includeFontPadding="false" />
         </LinearLayout>
 
         <LinearLayout
@@ -686,12 +693,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Logs"
-                android:textSize="10sp"
+                android:textSize="9sp"
                 android:textColor="#A40000"
-                android:fontFamily="@font/poppins_regular" />
+                android:fontFamily="@font/poppins_regular"
+                android:includeFontPadding="false" />
         </LinearLayout>
 
-        <!-- ADD PROFILE NAVIGATION -->
         <LinearLayout
             android:id="@+id/nav_profile"
             android:layout_width="0dp"
@@ -713,9 +720,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Profile"
-                android:textSize="10sp"
+                android:textSize="9sp"
                 android:textColor="#000000"
-                android:fontFamily="@font/poppins_regular" />
+                android:fontFamily="@font/poppins_regular"
+                android:includeFontPadding="false" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
