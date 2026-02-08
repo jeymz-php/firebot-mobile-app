@@ -7,11 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 public class HistoryActivity extends AppCompatActivity {
 
-    View liveIcon, fireIcon, batteryIcon, historyIcon, chatIcon, logsIcon, profileIcon;
+    // Added mapIcon to the view list
+    View liveIcon, fireIcon, batteryIcon, historyIcon, chatIcon, logsIcon, mapIcon, profileIcon;
     ImageView backButton, notificationButton;
 
     @Override
@@ -19,7 +19,7 @@ public class HistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-        // ADD THIS ONE LINE TO HIDE THE ACTION BAR
+        // HIDE THE ACTION BAR
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
@@ -28,51 +28,71 @@ public class HistoryActivity extends AppCompatActivity {
         backButton = findViewById(R.id.backButton);
         notificationButton = findViewById(R.id.notificationButton);
 
-        backButton.setOnClickListener(v -> finish());
+        if (backButton != null) {
+            backButton.setOnClickListener(v -> finish());
+        }
 
-        //notif bottom sheet
-        notificationButton.setOnClickListener(v -> {
-            NotificationsBottomSheetDialogFragment bottomSheet = new NotificationsBottomSheetDialogFragment();
-            bottomSheet.show(getSupportFragmentManager(), NotificationsBottomSheetDialogFragment.TAG);
-        });
+        // notif bottom sheet
+        if (notificationButton != null) {
+            notificationButton.setOnClickListener(v -> {
+                NotificationsBottomSheetDialogFragment bottomSheet = new NotificationsBottomSheetDialogFragment();
+                bottomSheet.show(getSupportFragmentManager(), NotificationsBottomSheetDialogFragment.TAG);
+            });
+        }
 
-        //nav bottom
+        // nav bottom - Initialize all 8 buttons
         liveIcon = findViewById(R.id.nav_monitoring);
         fireIcon = findViewById(R.id.nav_fire);
         batteryIcon = findViewById(R.id.nav_battery);
         historyIcon = findViewById(R.id.nav_history);
         chatIcon = findViewById(R.id.nav_chat);
         logsIcon = findViewById(R.id.nav_logs);
+        mapIcon = findViewById(R.id.nav_map); // Initialized Map
         profileIcon = findViewById(R.id.nav_profile);
 
-        // navigation
-        liveIcon.setOnClickListener(v ->
-                startActivity(new Intent(this, LiveMonitoringActivity.class))
-        );
+        // --- NAVIGATION LOGIC ---
 
-        fireIcon.setOnClickListener(v ->
-                startActivity(new Intent(this, FireExtinguisherMonitoringActivity.class))
-        );
-
-        batteryIcon.setOnClickListener(v ->
-                startActivity(new Intent(this, BatteryActivity.class))
-        );
-
-        historyIcon.setOnClickListener(v -> {
-            // eto na yung screen, so no need action
+        liveIcon.setOnClickListener(v -> {
+            startActivity(new Intent(this, LiveMonitoringActivity.class));
+            finish();
         });
 
-        chatIcon.setOnClickListener(v ->
-                startActivity(new Intent(this, ChatActivity.class))
-        );
+        fireIcon.setOnClickListener(v -> {
+            startActivity(new Intent(this, FireExtinguisherMonitoringActivity.class));
+            finish();
+        });
 
-        logsIcon.setOnClickListener(v ->
-                startActivity(new Intent(this, LogsActivity.class))
-        );
+        batteryIcon.setOnClickListener(v -> {
+            startActivity(new Intent(this, BatteryActivity.class));
+            finish();
+        });
 
-        profileIcon.setOnClickListener(v ->
-                startActivity(new Intent(this, ProfileActivity.class))
-        );
+        historyIcon.setOnClickListener(v -> {
+            // nasa screen na, no need action
+        });
+
+        chatIcon.setOnClickListener(v -> {
+            startActivity(new Intent(this, ChatActivity.class));
+            finish();
+        });
+
+        logsIcon.setOnClickListener(v -> {
+            startActivity(new Intent(this, LogsActivity.class));
+            finish();
+        });
+
+        // ADDED MAP NAVIGATION
+        if (mapIcon != null) {
+            mapIcon.setOnClickListener(v -> {
+                startActivity(new Intent(this, MapActivity.class));
+                finish();
+            });
+        }
+
+        profileIcon.setOnClickListener(v -> {
+            startActivity(new Intent(this, ProfileActivity.class));
+            finish();
+        });
 
         // for the DialogFragment
         setupCardClickListeners();
@@ -84,25 +104,15 @@ public class HistoryActivity extends AppCompatActivity {
         CardView cardFire = findViewById(R.id.card_fire_detected);
         CardView cardSms = findViewById(R.id.card_sms_alert);
 
-        if (cardAlarm != null) {
-            cardAlarm.setOnClickListener(v -> showHistoryDialog());
-        }
-        if (cardGas != null) {
-            cardGas.setOnClickListener(v -> showHistoryDialog());
-        }
-        if (cardFire != null) {
-            cardFire.setOnClickListener(v -> showHistoryDialog());
-        }
-        if (cardSms != null) {
-            cardSms.setOnClickListener(v -> showHistoryDialog());
-        }
+        if (cardAlarm != null) cardAlarm.setOnClickListener(v -> showHistoryDialog());
+        if (cardGas != null) cardGas.setOnClickListener(v -> showHistoryDialog());
+        if (cardFire != null) cardFire.setOnClickListener(v -> showHistoryDialog());
+        if (cardSms != null) cardSms.setOnClickListener(v -> showHistoryDialog());
     }
 
     private void showHistoryDialog() {
         HistoryDetailDialogFragment dialogFragment = new HistoryDetailDialogFragment();
-
         FragmentManager fm = getSupportFragmentManager();
-
         dialogFragment.show(fm, HistoryDetailDialogFragment.TAG);
     }
 }

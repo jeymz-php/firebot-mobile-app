@@ -167,11 +167,20 @@
         <!-- PROFILE (SPANS BOTH COLUMNS AND CENTERED) -->
         <LinearLayout
             style="@style/LandingButton"
-            android:id="@+id/btnProfile"
-            android:layout_row="3"
-            android:layout_column="0"
-            android:layout_columnSpan="2"
-            android:layout_gravity="center">
+            android:id="@+id/btnMap">
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/map_icon" /> <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VIEW MAP"
+            style="@style/LandingText" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/LandingButton"
+            android:id="@+id/btnProfile">
             <ImageView
                 android:layout_width="32dp"
                 android:layout_height="32dp"
@@ -182,6 +191,5 @@
                 android:text="PROFILE"
                 style="@style/LandingText" />
         </LinearLayout>
-
     </GridLayout>
 </RelativeLayout>

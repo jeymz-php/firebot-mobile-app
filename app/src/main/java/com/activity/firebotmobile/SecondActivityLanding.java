@@ -93,6 +93,18 @@ public class SecondActivityLanding extends AppCompatActivity {
             });
         }
 
+        LinearLayout btnMap = findViewById(R.id.btnMap);
+
+        if (btnMap != null) {
+            btnMap.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(SecondActivityLanding.this, MapActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
+
         // --- 7. Send Message Button Setup (From remote) ---
         LinearLayout btnSendMessage = findViewById(R.id.btnSendMessage);
         btnSendMessage.setOnClickListener(v -> {

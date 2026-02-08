@@ -16,53 +16,57 @@ public class LogsActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_logs);
 
+        // HIDE THE ACTION BAR
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
+        // Header Buttons
         findViewById(R.id.backButton).setOnClickListener(v -> finish());
 
         findViewById(R.id.notificationButton).setOnClickListener(v -> {
             NotificationsBottomSheetDialogFragment bottomSheet = new NotificationsBottomSheetDialogFragment();
-            // notif bottom sheet
             bottomSheet.show(getSupportFragmentManager(), NotificationsBottomSheetDialogFragment.TAG);
         });
 
+        // --- NAVIGATION LOGIC ---
+
         findViewById(R.id.nav_monitoring).setOnClickListener(v -> {
-            Intent intent = new Intent(LogsActivity.this, LiveMonitoringActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(LogsActivity.this, LiveMonitoringActivity.class));
             finish();
         });
 
         findViewById(R.id.nav_fire).setOnClickListener(v -> {
-            Intent intent = new Intent(LogsActivity.this, FireExtinguisherMonitoringActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(LogsActivity.this, FireExtinguisherMonitoringActivity.class));
             finish();
         });
 
         findViewById(R.id.nav_battery).setOnClickListener(v -> {
-            Intent intent = new Intent(LogsActivity.this, BatteryActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(LogsActivity.this, BatteryActivity.class));
             finish();
         });
 
         findViewById(R.id.nav_history).setOnClickListener(v -> {
-            Intent intent = new Intent(LogsActivity.this, HistoryActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(LogsActivity.this, HistoryActivity.class));
             finish();
         });
 
         findViewById(R.id.nav_chat).setOnClickListener(v -> {
-            Intent intent = new Intent(LogsActivity.this, ChatActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(LogsActivity.this, ChatActivity.class));
+            finish();
+        });
+
+        // ADDED MAP NAVIGATION
+        findViewById(R.id.nav_map).setOnClickListener(v -> {
+            startActivity(new Intent(LogsActivity.this, MapActivity.class));
             finish();
         });
 
         findViewById(R.id.nav_profile).setOnClickListener(v -> {
-            Intent intent = new Intent(LogsActivity.this, ProfileActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(LogsActivity.this, ProfileActivity.class));
             finish();
         });
 
-        // ADD THIS ONE LINE TO HIDE THE ACTION BAR
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
+        // Note: nav_logs doesn't need a listener as we are already on this screen.
     }
 }

@@ -38,6 +38,7 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
+    implementation("org.osmdroid:osmdroid-android:6.1.18")
     implementation(libs.volley)
 
     // FIX: Added CircleImageView dependency to resolve layout errors

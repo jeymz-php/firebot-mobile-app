@@ -21,7 +21,8 @@ import java.net.URLEncoder;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    View liveIcon, fireIcon, batteryIcon, historyIcon, chatIcon, logsIcon, profileIcon;
+    // Added mapIcon to the view list
+    View liveIcon, fireIcon, batteryIcon, historyIcon, chatIcon, logsIcon, mapIcon, profileIcon;
     ImageButton backButton, notificationButton;
     Button forgetRobotButton;
 
@@ -53,13 +54,14 @@ public class ProfileActivity extends AppCompatActivity {
         profileDeviceId = findViewById(R.id.profile_device_id);
         profileDeviceModel = findViewById(R.id.profile_device_model);
 
-        // Bottom navigation
+        // Bottom navigation - Initialize all 8 buttons
         liveIcon = findViewById(R.id.nav_monitoring);
         fireIcon = findViewById(R.id.nav_fire);
         batteryIcon = findViewById(R.id.nav_battery);
         historyIcon = findViewById(R.id.nav_history);
         chatIcon = findViewById(R.id.nav_chat);
         logsIcon = findViewById(R.id.nav_logs);
+        mapIcon = findViewById(R.id.nav_map); // Added Map initialization
         profileIcon = findViewById(R.id.nav_profile);
 
         // Back button
@@ -76,7 +78,8 @@ public class ProfileActivity extends AppCompatActivity {
             showForgetRobotConfirmationDialog();
         });
 
-        // Bottom navigation
+        // --- NAVIGATION LOGIC ---
+
         liveIcon.setOnClickListener(v -> {
             startActivity(new Intent(this, LiveMonitoringActivity.class));
             finish();
@@ -106,6 +109,14 @@ public class ProfileActivity extends AppCompatActivity {
             startActivity(new Intent(this, LogsActivity.class));
             finish();
         });
+
+        // ADDED MAP NAVIGATION
+        if (mapIcon != null) {
+            mapIcon.setOnClickListener(v -> {
+                startActivity(new Intent(this, MapActivity.class));
+                finish();
+            });
+        }
 
         // profileIcon listener
         profileIcon.setOnClickListener(v -> {
@@ -202,9 +213,6 @@ public class ProfileActivity extends AppCompatActivity {
         builder.setMessage("The robot has been successfully forgotten. You can now reconnect or add a new robot.");
 
         builder.setPositiveButton("OK", (dialog, which) -> {
-            // Dito pwedeng mag-navigate sa setup screen
-            // startActivity(new Intent(this, SetupActivity.class));
-            // finish();
             dialog.dismiss();
         });
 

@@ -397,14 +397,13 @@
 
     </androidx.cardview.widget.CardView>
 
-    <!-- Bottom Navigation -->
     <LinearLayout
         android:id="@+id/bottom_navigation_bar"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="#FFFFFF"
         android:orientation="horizontal"
-        android:weightSum="7"
+        android:weightSum="8"
         android:elevation="8dp"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
@@ -427,8 +426,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_live_default"
-                app:tint="#000000"
-                android:contentDescription="Navigation Icon" />
+                app:tint="#000000" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -454,8 +452,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_fire_extinguisher"
-                app:tint="#000000"
-                android:contentDescription="Navigation Icon" />
+                app:tint="#000000" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -481,8 +478,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_battery_default"
-                app:tint="#000000"
-                android:contentDescription="Navigation Icon" />
+                app:tint="#000000" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -508,8 +504,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_history_default"
-                app:tint="#000000"
-                android:contentDescription="Navigation Icon" />
+                app:tint="#000000" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -535,8 +530,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_chat_default"
-                app:tint="#000000"
-                android:contentDescription="Navigation Icon" />
+                app:tint="#000000" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -562,12 +556,37 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_logs_default"
-                app:tint="#000000"
-                android:contentDescription="Navigation Icon" />
+                app:tint="#000000" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Logs"
+                android:textSize="9sp"
+                android:textColor="#000000"
+                android:fontFamily="@font/poppins_regular"
+                android:includeFontPadding="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nav_map"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:paddingTop="4dp">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/map_icon"
+                app:tint="#000000" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Map"
                 android:textSize="9sp"
                 android:textColor="#000000"
                 android:fontFamily="@font/poppins_regular"
@@ -589,8 +608,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/person_icon"
-                app:tint="#A40000"
-                android:contentDescription="Navigation Icon" />
+                app:tint="#A40000" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -600,7 +618,6 @@
                 android:fontFamily="@font/poppins_regular"
                 android:includeFontPadding="false" />
         </LinearLayout>
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,8 @@ import android.widget.TextView;
 
 public class BatteryActivity extends AppCompatActivity {
 
-    View liveIcon, fireIcon, batteryIcon, historyIcon, chatIcon, logsIcon, profileIcon;
+    // Added mapIcon to the view list
+    View liveIcon, fireIcon, batteryIcon, historyIcon, chatIcon, logsIcon, mapIcon, profileIcon;
 
     // Header views
     ImageButton backButton, notificationButton;
@@ -24,17 +25,20 @@ public class BatteryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battery);
 
-        // ADD THIS ONE LINE TO HIDE THE ACTION BAR
+        // HIDE THE ACTION BAR
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
 
+        // Header Setup
         backButton = findViewById(R.id.backButton);
-
         notificationButton = findViewById(R.id.notificationButton);
-        backButton.setOnClickListener(v -> finish());
 
-        // notif bottom sheets
+        if (backButton != null) {
+            backButton.setOnClickListener(v -> finish());
+        }
+
+        // Notification bottom sheet
         if (notificationButton != null) {
             notificationButton.setOnClickListener(v -> {
                 NotificationsBottomSheetDialogFragment bottomSheet = new NotificationsBottomSheetDialogFragment();
@@ -42,48 +46,64 @@ public class BatteryActivity extends AppCompatActivity {
             });
         }
 
-        // battery content
+        // Battery content views
         circularProgressBar = findViewById(R.id.circular_progress_bar);
         batteryPercentage = findViewById(R.id.battery_percentage);
         batteryStatusValue = findViewById(R.id.battery_status_value);
         remainingRuntimeValue = findViewById(R.id.remaining_runtime_value);
         lastChargedValue = findViewById(R.id.last_charged_value);
 
-        // bottom nav
+        // Bottom Nav - Initialize all 8 buttons
         liveIcon = findViewById(R.id.nav_monitoring);
         fireIcon = findViewById(R.id.nav_fire);
         batteryIcon = findViewById(R.id.nav_battery);
         historyIcon = findViewById(R.id.nav_history);
         chatIcon = findViewById(R.id.nav_chat);
         logsIcon = findViewById(R.id.nav_logs);
+        mapIcon = findViewById(R.id.nav_map); // Initialized Map
         profileIcon = findViewById(R.id.nav_profile);
 
-        liveIcon.setOnClickListener(v ->
-                startActivity(new Intent(this, LiveMonitoringActivity.class))
-        );
-
-        fireIcon.setOnClickListener(v ->
-                startActivity(new Intent(this, FireExtinguisherMonitoringActivity.class))
-        );
-
-        batteryIcon.setOnClickListener(v -> {
-            // walang action kasi nasa battery screen na
+        // Navigation Logic
+        liveIcon.setOnClickListener(v -> {
+            startActivity(new Intent(this, LiveMonitoringActivity.class));
+            finish();
         });
 
-        historyIcon.setOnClickListener(v ->
-                startActivity(new Intent(this, HistoryActivity.class))
-        );
+        fireIcon.setOnClickListener(v -> {
+            startActivity(new Intent(this, FireExtinguisherMonitoringActivity.class));
+            finish();
+        });
 
-        chatIcon.setOnClickListener(v ->
-                startActivity(new Intent(this, ChatActivity.class))
-        );
+        batteryIcon.setOnClickListener(v -> {
+            // Already here
+        });
 
-        logsIcon.setOnClickListener(v ->
-                startActivity(new Intent(this, LogsActivity.class))
-        );
+        historyIcon.setOnClickListener(v -> {
+            startActivity(new Intent(this, HistoryActivity.class));
+            finish();
+        });
 
-        profileIcon.setOnClickListener(v ->
-                startActivity(new Intent(this, ProfileActivity.class))
-        );
+        chatIcon.setOnClickListener(v -> {
+            startActivity(new Intent(this, ChatActivity.class));
+            finish();
+        });
+
+        logsIcon.setOnClickListener(v -> {
+            startActivity(new Intent(this, LogsActivity.class));
+            finish();
+        });
+
+        // ADDED MAP NAVIGATION
+        if (mapIcon != null) {
+            mapIcon.setOnClickListener(v -> {
+                startActivity(new Intent(this, MapActivity.class));
+                finish();
+            });
+        }
+
+        profileIcon.setOnClickListener(v -> {
+            startActivity(new Intent(this, ProfileActivity.class));
+            finish();
+        });
     }
 }

@@ -7,12 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LiveMonitoringActivity extends AppCompatActivity {
 
-    View monitoringIcon, fireIcon, batteryIcon, historyIcon, chatIcon, logsIcon, profileIcon;
+    // Added mapIcon to the list
+    View monitoringIcon, fireIcon, batteryIcon, historyIcon, chatIcon, logsIcon, mapIcon, profileIcon;
     ImageButton backButton, notificationButton;
     View liveDot, flameIntensityBar, gasIntensityBar;
 
@@ -30,6 +30,7 @@ public class LiveMonitoringActivity extends AppCompatActivity {
         historyIcon = findViewById(R.id.nav_history);
         chatIcon = findViewById(R.id.nav_chat);
         logsIcon = findViewById(R.id.nav_logs);
+        mapIcon = findViewById(R.id.nav_map); // Initialize Map ID
         profileIcon = findViewById(R.id.nav_profile);
 
         // Animation IDs
@@ -67,7 +68,7 @@ public class LiveMonitoringActivity extends AppCompatActivity {
         int targetWidth = (int) (maxWidth * percentage);
 
         ValueAnimator anim = ValueAnimator.ofInt(1, targetWidth);
-        anim.setDuration(1500); // 1.5 seconds sliding effect
+        anim.setDuration(1500);
         anim.setInterpolator(new DecelerateInterpolator());
 
         anim.addUpdateListener(animation -> {
@@ -75,13 +76,21 @@ public class LiveMonitoringActivity extends AppCompatActivity {
             android.view.ViewGroup.LayoutParams params = bar.getLayoutParams();
             params.width = val;
             bar.setLayoutParams(params);
-            bar.requestLayout(); // FORCE system to update the "image"
+            bar.requestLayout();
         });
         anim.start();
     }
 
     private void setupClickListeners() {
         if (backButton != null) backButton.setOnClickListener(v -> finish());
+
+        // Added Map navigation logic
+        if (mapIcon != null) {
+            mapIcon.setOnClickListener(v -> {
+                startActivity(new Intent(this, MapActivity.class));
+                finish();
+            });
+        }
 
         fireIcon.setOnClickListener(v -> { startActivity(new Intent(this, FireExtinguisherMonitoringActivity.class)); finish(); });
         batteryIcon.setOnClickListener(v -> { startActivity(new Intent(this, BatteryActivity.class)); finish(); });
