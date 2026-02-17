@@ -1,1 +1,1 @@
-# firebot-mobile-app
+# FireBOT (Mobile App)
