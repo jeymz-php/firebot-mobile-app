@@ -1,6 +1,7 @@
 package com.activity.firebotmobile;
 
 import android.content.Intent;
+import android.content.SharedPreferences; // Added
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -22,6 +23,11 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        // Hide action bar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         initializeViews();
         startAnimationSequence();
     }
@@ -41,23 +47,36 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void startAnimationSequence() {
-        // 1. LOGO MUNA - Elegant entrance
+        // 1. LOGO FIRST
         handler.postDelayed(this::animateLogoEntrance, 400);
 
-        // 2. FONT SUNOD - After logo settles
+        // 2. TEXT SECOND
         handler.postDelayed(this::startTextAnimation, 1200);
 
-        // 3. FINAL SYNC ANIMATION - Logo and text dance together
+        // 3. SYNC ANIMATION
         handler.postDelayed(this::startFinalSyncAnimation, 2800);
 
-        // 4. Navigate to LANDING ACTIVITY (not MainActivity)
-        // Sa startAnimationSequence method, palitan ang:
+        // 4. AUTOMATIC REDIRECT LOGIC
         handler.postDelayed(() -> {
-            Intent intent = new Intent(SplashActivity.this, LandingActivity.class);
+            SharedPreferences prefs = getSharedPreferences("FireBOT_Prefs", MODE_PRIVATE);
+
+            Intent intent;
+            // Check if the user has already scanned a QR code (exists in local storage)
+            if (prefs.contains("device_id")) {
+                // Already registered -> Go to Landing Activity
+                intent = new Intent(SplashActivity.this, SecondActivityLanding.class);
+            } else {
+                // Not registered -> Go to the initial Landing/Welcome Activity
+                // (Note: Change this to LandingActivity or QRScannerActivity depending on your preference)
+                intent = new Intent(SplashActivity.this, LandingActivity.class);
+            }
+
             startActivity(intent);
-            finish();
+            finish(); // Prevent user from going back to Splash
         }, 5000);
     }
+
+    // --- LOGO ANIMATIONS ---
 
     private void animateLogoEntrance() {
         logoImage.setVisibility(ImageView.VISIBLE);
@@ -66,7 +85,6 @@ public class SplashActivity extends AppCompatActivity {
         logoImage.setScaleY(0.5f);
         logoImage.setRotation(-15f);
 
-        // ELEGANT ENTRANCE: Scale + Rotate + Fade
         logoImage.animate()
                 .alpha(1f)
                 .scaleX(1f)
@@ -79,7 +97,6 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void startLogoBreathing() {
-        // BREATHING EFFECT - Subtle pulse
         logoImage.animate()
                 .scaleX(1.05f)
                 .scaleY(1.05f)
@@ -95,8 +112,9 @@ public class SplashActivity extends AppCompatActivity {
                 .start();
     }
 
+    // --- TEXT ANIMATIONS ---
+
     private void startTextAnimation() {
-        // STAGGERED ENTRANCE with bounce
         for (int i = 0; i < letters.length; i++) {
             final int index = i;
             handler.postDelayed(() -> animateLetterSpring(letters[index], index), i * 120);
@@ -109,7 +127,6 @@ public class SplashActivity extends AppCompatActivity {
         letter.setScaleY(0.3f);
         letter.setTranslationY(50f);
 
-        // SPRING ENTRANCE with overshoot
         letter.animate()
                 .alpha(1f)
                 .scaleX(1f)
@@ -118,7 +135,6 @@ public class SplashActivity extends AppCompatActivity {
                 .setDuration(600)
                 .setInterpolator(new AnticipateOvershootInterpolator(1.0f))
                 .withEndAction(() -> {
-                    // Small celebration bounce after all letters appear
                     if (index == letters.length - 1) {
                         startLettersCelebration();
                     }
@@ -127,7 +143,6 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void startLettersCelebration() {
-        // ALL LETTERS BOUNCE TOGETHER
         for (int i = 0; i < letters.length; i++) {
             final TextView letter = letters[i];
             handler.postDelayed(() -> {
@@ -146,10 +161,10 @@ public class SplashActivity extends AppCompatActivity {
         }
     }
 
+    // --- FINAL SYNC ---
+
     private void startFinalSyncAnimation() {
-        // LOGO AND TEXT DANCE TOGETHER
         handler.postDelayed(() -> {
-            // Logo bounce
             logoImage.animate()
                     .scaleX(1.1f)
                     .scaleY(1.1f)
@@ -163,7 +178,6 @@ public class SplashActivity extends AppCompatActivity {
                     })
                     .start();
 
-            // Text wave in sync
             for (int i = 0; i < letters.length; i++) {
                 final TextView letter = letters[i];
                 handler.postDelayed(() -> {
@@ -183,12 +197,10 @@ public class SplashActivity extends AppCompatActivity {
             }
         }, 200);
 
-        // SECOND SYNC CYCLE - Head shake together
         handler.postDelayed(this::startSyncHeadShake, 1000);
     }
 
     private void startSyncHeadShake() {
-        // LOGO HEAD SHAKE
         logoImage.animate()
                 .rotation(-8f)
                 .setDuration(150)
@@ -206,7 +218,6 @@ public class SplashActivity extends AppCompatActivity {
                 })
                 .start();
 
-        // TEXT HEAD SHAKE IN SYNC (delayed slightly)
         handler.postDelayed(() -> {
             for (TextView letter : letters) {
                 letter.animate()

@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:background="#F2F2F2">
 
-    <!-- Notification bell -->
     <ImageButton
         android:id="@+id/btnNotification"
         android:layout_width="wrap_content"
@@ -20,7 +19,6 @@
         android:contentDescription="Notifications"
         android:src="@drawable/notification_bell" />
 
-    <!-- Logo and Title -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -59,19 +57,15 @@
             android:fontFamily="@font/poppins_bold" />
     </LinearLayout>
 
-    <!-- Grid of Buttons -->
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:alignmentMode="alignMargins"
         android:columnCount="2"
-        android:rowCount="4"
         android:rowOrderPreserved="false"
         android:layout_marginTop="40dp">
 
-        <!-- Row 1 -->
-        <!-- LIVE MONITORING -->
         <LinearLayout
             style="@style/LandingButton"
             android:id="@+id/btnLiveMonitoring">
@@ -86,38 +80,6 @@
                 style="@style/LandingText" />
         </LinearLayout>
 
-        <!-- EXTINGUISHER MONITORING -->
-        <LinearLayout
-            style="@style/LandingButton"
-            android:id="@+id/btnExtinguisher">
-            <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/fire_extinguisher" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="EXTINGUISHER\nMONITORING"
-                style="@style/LandingText" />
-        </LinearLayout>
-
-        <!-- Row 2 -->
-        <!-- BATTERY MONITORING -->
-        <LinearLayout
-            style="@style/LandingButton"
-            android:id="@+id/btnBattery">
-            <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/battery" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="BATTERY\nMONITORING"
-                style="@style/LandingText" />
-        </LinearLayout>
-
-        <!-- HISTORY -->
         <LinearLayout
             style="@style/LandingButton"
             android:id="@+id/btnHistory">
@@ -132,8 +94,6 @@
                 style="@style/LandingText" />
         </LinearLayout>
 
-        <!-- Row 3 -->
-        <!-- LOGS -->
         <LinearLayout
             style="@style/LandingButton"
             android:id="@+id/btnLogs">
@@ -148,7 +108,6 @@
                 style="@style/LandingText" />
         </LinearLayout>
 
-        <!-- SEND MESSAGE -->
         <LinearLayout
             style="@style/LandingButton"
             android:id="@+id/btnSendMessage">
@@ -163,19 +122,18 @@
                 style="@style/LandingText" />
         </LinearLayout>
 
-        <!-- Row 4 - PROFILE ONLY (NAKAGITNA) -->
-        <!-- PROFILE (SPANS BOTH COLUMNS AND CENTERED) -->
         <LinearLayout
             style="@style/LandingButton"
             android:id="@+id/btnMap">
             <ImageView
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:src="@drawable/map_icon" /> <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="VIEW MAP"
-            style="@style/LandingText" />
+                android:src="@drawable/map_icon" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VIEW MAP"
+                style="@style/LandingText" />
         </LinearLayout>
 
         <LinearLayout

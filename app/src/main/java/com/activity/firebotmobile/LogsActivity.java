@@ -8,20 +8,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class LogsActivity extends AppCompatActivity {
 
-    public static final String TAG = "LogsActivity";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_logs);
 
-        // HIDE THE ACTION BAR
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
 
-        // Header Buttons
         findViewById(R.id.backButton).setOnClickListener(v -> finish());
 
         findViewById(R.id.notificationButton).setOnClickListener(v -> {
@@ -30,21 +25,12 @@ public class LogsActivity extends AppCompatActivity {
         });
 
         // --- NAVIGATION LOGIC ---
-
         findViewById(R.id.nav_monitoring).setOnClickListener(v -> {
             startActivity(new Intent(LogsActivity.this, LiveMonitoringActivity.class));
             finish();
         });
 
-        findViewById(R.id.nav_fire).setOnClickListener(v -> {
-            startActivity(new Intent(LogsActivity.this, FireExtinguisherMonitoringActivity.class));
-            finish();
-        });
-
-        findViewById(R.id.nav_battery).setOnClickListener(v -> {
-            startActivity(new Intent(LogsActivity.this, BatteryActivity.class));
-            finish();
-        });
+        // Removed nav_fire and nav_battery listeners to prevent crash
 
         findViewById(R.id.nav_history).setOnClickListener(v -> {
             startActivity(new Intent(LogsActivity.this, HistoryActivity.class));
@@ -56,7 +42,6 @@ public class LogsActivity extends AppCompatActivity {
             finish();
         });
 
-        // ADDED MAP NAVIGATION
         findViewById(R.id.nav_map).setOnClickListener(v -> {
             startActivity(new Intent(LogsActivity.this, MapActivity.class));
             finish();
@@ -66,7 +51,5 @@ public class LogsActivity extends AppCompatActivity {
             startActivity(new Intent(LogsActivity.this, ProfileActivity.class));
             finish();
         });
-
-        // Note: nav_logs doesn't need a listener as we are already on this screen.
     }
 }

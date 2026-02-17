@@ -63,24 +63,15 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Space
-        android:id="@+id/camera_space_placeholder"
-        android:layout_width="0dp"
-        android:layout_height="220dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header_layout" />
-
     <LinearLayout
         android:id="@+id/quick_action_buttons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/camera_space_placeholder">
+        app:layout_constraintTop_toBottomOf="@id/header_layout">
 
         <ImageButton
             android:id="@+id/chat_button_small"
@@ -120,7 +111,7 @@
         android:id="@+id/alert_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:text="ALERT: FIRE DETECTED"
         android:textColor="#1f1f1f"
         android:textSize="20sp"
@@ -162,8 +153,8 @@
                     android:id="@+id/live_indicator_dot"
                     android:layout_width="8dp"
                     android:layout_height="8dp"
-                    android:background="@drawable/circle_white"
-                    android:layout_marginEnd="8dp" />
+                    android:layout_marginEnd="8dp"
+                    android:background="#FFFFFF"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -180,63 +171,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp"
-                android:layout_marginBottom="12dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/icon_flame"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_fire2"
-                        app:tint="#FFFFFF" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/icon_flame"
-                        android:layout_marginStart="12dp"
-                        android:text="FLAME SENSOR"
-                        android:textColor="#FFCDD2"
-                        android:textSize="10sp"
-                        android:fontFamily="@font/poppins_bold" />
-
-                    <TextView
-                        android:id="@+id/status_badge_flame"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:text="DANGER"
-                        android:textColor="#FFFFFF"
-                        android:background="#40000000"
-                        android:paddingHorizontal="6dp"
-                        android:paddingVertical="2dp"
-                        android:textSize="9sp"
-                        android:fontFamily="@font/poppins_bold" />
-                </RelativeLayout>
-
+                android:padding="8dp">
                 <TextView
-                    android:id="@+id/update_flame"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Fire Detected at 30°"
-                    android:textColor="#FFFFFF"
-                    android:textSize="15sp"
-                    android:fontFamily="@font/poppins_regular" />
-
+                    android:text="FRONT FLAME SENSOR"
+                    android:textColor="#FFCDD2"
+                    android:textSize="10sp"
+                    android:fontFamily="@font/poppins_bold" />
                 <View
-                    android:id="@+id/flame_bar_bg"
                     android:layout_width="match_parent"
                     android:layout_height="4dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:background="#33FFFFFF" />
                 <View
-                    android:id="@+id/flame_intensity_bar"
-                    android:layout_width="200dp"
+                    android:id="@+id/flame_front_bar"
+                    android:layout_width="1dp"
                     android:layout_height="4dp"
                     android:layout_marginTop="-4dp"
                     android:background="#FFFFFF" />
@@ -246,63 +196,47 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp"
-                android:layout_marginBottom="8dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/icon_gas"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_gas_smoke"
-                        app:tint="#FFFFFF" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/icon_gas"
-                        android:layout_marginStart="12dp"
-                        android:text="GAS SENSOR"
-                        android:textColor="#FFCDD2"
-                        android:textSize="10sp"
-                        android:fontFamily="@font/poppins_bold" />
-
-                    <TextView
-                        android:id="@+id/status_badge_gas"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:text="CRITICAL"
-                        android:textColor="#FFFFFF"
-                        android:background="#40000000"
-                        android:paddingHorizontal="6dp"
-                        android:paddingVertical="2dp"
-                        android:textSize="9sp"
-                        android:fontFamily="@font/poppins_bold" />
-                </RelativeLayout>
-
+                android:padding="8dp">
                 <TextView
-                    android:id="@+id/update_gas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="1,000 ppm"
-                    android:textColor="#FFFFFF"
-                    android:textSize="15sp"
-                    android:fontFamily="@font/poppins_regular" />
-
+                    android:text="LEFT FLAME SENSOR"
+                    android:textColor="#FFCDD2"
+                    android:textSize="10sp"
+                    android:fontFamily="@font/poppins_bold" />
                 <View
-                    android:id="@+id/gas_bar_bg"
                     android:layout_width="match_parent"
                     android:layout_height="4dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:background="#33FFFFFF" />
                 <View
-                    android:id="@+id/gas_intensity_bar"
-                    android:layout_width="250dp"
+                    android:id="@+id/flame_left_bar"
+                    android:layout_width="1dp"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="-4dp"
+                    android:background="#FFFFFF" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RIGHT FLAME SENSOR"
+                    android:textColor="#FFCDD2"
+                    android:textSize="10sp"
+                    android:fontFamily="@font/poppins_bold" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="4dp"
+                    android:background="#33FFFFFF" />
+                <View
+                    android:id="@+id/flame_right_bar"
+                    android:layout_width="1dp"
                     android:layout_height="4dp"
                     android:layout_marginTop="-4dp"
                     android:background="#FFFFFF" />
@@ -313,6 +247,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
+                android:layout_marginTop="8dp"
                 android:text="System Syncing: Just Now"
                 android:textColor="#FFCDD2"
                 android:textSize="10sp"
@@ -328,7 +263,7 @@
         android:layout_height="60dp"
         android:background="#FFFFFF"
         android:orientation="horizontal"
-        android:weightSum="8"
+        android:weightSum="6"
         android:elevation="8dp"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
@@ -358,58 +293,6 @@
                 android:text="Monitoring"
                 android:textSize="9sp"
                 android:textColor="#A40000"
-                android:fontFamily="@font/poppins_regular"
-                android:includeFontPadding="false" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/nav_fire"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:paddingTop="4dp">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_fire_extinguisher"
-                app:tint="#000000" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fire"
-                android:textSize="9sp"
-                android:textColor="#000000"
-                android:fontFamily="@font/poppins_regular"
-                android:includeFontPadding="false" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/nav_battery"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:paddingTop="4dp">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_battery_default"
-                app:tint="#000000" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Battery"
-                android:textSize="9sp"
-                android:textColor="#000000"
                 android:fontFamily="@font/poppins_regular"
                 android:includeFontPadding="false" />
         </LinearLayout>

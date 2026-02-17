@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SecondActivityLanding extends AppCompatActivity {
@@ -15,108 +14,66 @@ public class SecondActivityLanding extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.second_activity_landing);
 
-        // --- 1. Notification Button Setup (Keeping local logic for bottom sheet) ---
-        ImageButton notificationButton = findViewById(R.id.btnNotification);
+        // --- THE FIX: ADD THIS TO REMOVE THE TOP RED ACTION BAR ---
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
+        // --- 1. Notification Button ---
+        ImageButton notificationButton = findViewById(R.id.btnNotification);
         if (notificationButton != null) {
             notificationButton.setOnClickListener(v -> {
-                // Assuming NotificationsBottomSheetDialogFragment is available in your local branch
                 NotificationsBottomSheetDialogFragment bottomSheet = new NotificationsBottomSheetDialogFragment();
                 bottomSheet.show(getSupportFragmentManager(), NotificationsBottomSheetDialogFragment.TAG);
             });
         }
 
-        // --- 2. Live Monitoring Button Setup (From local HEAD) ---
+        // --- 2. Live Monitoring ---
         LinearLayout btnLiveMonitoring = findViewById(R.id.btnLiveMonitoring);
-
         if (btnLiveMonitoring != null) {
-            btnLiveMonitoring.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(SecondActivityLanding.this, LiveMonitoringActivity.class);
-                    startActivity(intent);
-                }
+            btnLiveMonitoring.setOnClickListener(v -> {
+                startActivity(new Intent(SecondActivityLanding.this, LiveMonitoringActivity.class));
             });
         }
 
-        // --- 3. Extinguisher Button Setup (From local HEAD) ---
-        View extinguisherButton = findViewById(R.id.btnExtinguisher);
-
-        if (extinguisherButton != null) {
-            extinguisherButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(SecondActivityLanding.this, FireExtinguisherMonitoringActivity.class);
-                    startActivity(intent);
-                }
-            });
-        }
-
-        // --- 4. History Button Setup (From local HEAD) ---
+        // --- 3. History ---
         LinearLayout btnHistory = findViewById(R.id.btnHistory);
-
         if (btnHistory != null) {
-            btnHistory.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(SecondActivityLanding.this, HistoryActivity.class);
-                    startActivity(intent);
-                }
+            btnHistory.setOnClickListener(v -> {
+                startActivity(new Intent(SecondActivityLanding.this, HistoryActivity.class));
             });
         }
 
-        // --- 5. Battery Monitoring Button Setup (From local HEAD) 🔋 ---
-        LinearLayout btnBattery = findViewById(R.id.btnBattery);
-
-        if (btnBattery != null) {
-            btnBattery.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // Create an Intent to launch the BatteryActivity
-                    Intent intent = new Intent(SecondActivityLanding.this, BatteryActivity.class);
-                    startActivity(intent);
-                }
-            });
-        }
-
-        // --- 6. Logs Button Setup (From local HEAD) 📝 ---
+        // --- 4. Logs ---
         LinearLayout btnLogs = findViewById(R.id.btnLogs);
-
         if (btnLogs != null) {
-            btnLogs.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // Create an Intent to launch the LogsActivity
-                    Intent intent = new Intent(SecondActivityLanding.this, LogsActivity.class);
-                    startActivity(intent);
-                }
+            btnLogs.setOnClickListener(v -> {
+                startActivity(new Intent(SecondActivityLanding.this, LogsActivity.class));
             });
         }
 
+        // --- 5. Map ---
         LinearLayout btnMap = findViewById(R.id.btnMap);
-
         if (btnMap != null) {
-            btnMap.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(SecondActivityLanding.this, MapActivity.class);
-                    startActivity(intent);
-                }
+            btnMap.setOnClickListener(v -> {
+                startActivity(new Intent(SecondActivityLanding.this, MapActivity.class));
             });
         }
 
-        // --- 7. Send Message Button Setup (From remote) ---
+        // --- 6. Send Message ---
         LinearLayout btnSendMessage = findViewById(R.id.btnSendMessage);
-        btnSendMessage.setOnClickListener(v -> {
-            Intent intent = new Intent(this, MessageActivity.class);
-            startActivity(intent);
-        });
+        if (btnSendMessage != null) {
+            btnSendMessage.setOnClickListener(v -> {
+                startActivity(new Intent(this, MessageActivity.class));
+            });
+        }
 
-        // --- PROFILE BUTTON SETUP ---
+        // --- 7. Profile ---
         LinearLayout btnProfile = findViewById(R.id.btnProfile);
-        btnProfile.setOnClickListener(v -> {
-            Intent intent = new Intent(this, ProfileActivity.class);
-            startActivity(intent);
-        });
+        if (btnProfile != null) {
+            btnProfile.setOnClickListener(v -> {
+                startActivity(new Intent(this, ProfileActivity.class));
+            });
+        }
     }
 }

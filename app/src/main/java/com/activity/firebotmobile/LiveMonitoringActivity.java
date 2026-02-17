@@ -4,99 +4,101 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
-import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 
 public class LiveMonitoringActivity extends AppCompatActivity {
-
-    // Added mapIcon to the list
-    View monitoringIcon, fireIcon, batteryIcon, historyIcon, chatIcon, logsIcon, mapIcon, profileIcon;
-    ImageButton backButton, notificationButton;
-    View liveDot, flameIntensityBar, gasIntensityBar;
+    View liveDot, barFront, barLeft, barRight;
+    Handler handler = new Handler();
+    RequestQueue requestQueue;
+    String apiURL = "https://firebot.ucc-bsit.org/api/get_flame_status.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_live_monitoring);
 
-        // Standard IDs
-        backButton = findViewById(R.id.back_button);
-        notificationButton = findViewById(R.id.notification_button);
-        monitoringIcon = findViewById(R.id.nav_monitoring);
-        fireIcon = findViewById(R.id.nav_fire);
-        batteryIcon = findViewById(R.id.nav_battery);
-        historyIcon = findViewById(R.id.nav_history);
-        chatIcon = findViewById(R.id.nav_chat);
-        logsIcon = findViewById(R.id.nav_logs);
-        mapIcon = findViewById(R.id.nav_map); // Initialize Map ID
-        profileIcon = findViewById(R.id.nav_profile);
-
-        // Animation IDs
+        requestQueue = Volley.newRequestQueue(this);
+        barFront = findViewById(R.id.flame_front_bar);
+        barLeft = findViewById(R.id.flame_left_bar);
+        barRight = findViewById(R.id.flame_right_bar);
         liveDot = findViewById(R.id.live_indicator_dot);
-        flameIntensityBar = findViewById(R.id.flame_intensity_bar);
-        gasIntensityBar = findViewById(R.id.gas_intensity_bar);
 
         if (getSupportActionBar() != null) getSupportActionBar().hide();
 
-        setupClickListeners();
+        setupNavigation();
+        startLivePulse();
+        startPolling();
+    }
 
-        // THE FIX: Wait for the layout to finish measuring before animating
-        getWindow().getDecorView().postDelayed(() -> {
-            startLivePulse();
-            animateBarForcefully(flameIntensityBar, 0.75f); // 75% fill
-            animateBarForcefully(gasIntensityBar, 0.60f);   // 60% fill
-        }, 500);
+    private void setupNavigation() {
+        findViewById(R.id.nav_map).setOnClickListener(v -> {
+            startActivity(new Intent(this, MapActivity.class));
+            finish();
+        });
+        // Add other navigation listeners (History, Profile, etc.) here
     }
 
     private void startLivePulse() {
-        if (liveDot != null) {
-            ObjectAnimator pulse = ObjectAnimator.ofFloat(liveDot, View.ALPHA, 1.0f, 0.2f);
-            pulse.setDuration(1000);
-            pulse.setRepeatMode(ValueAnimator.REVERSE);
-            pulse.setRepeatCount(ValueAnimator.INFINITE);
-            pulse.start();
-        }
+        ObjectAnimator pulse = ObjectAnimator.ofFloat(liveDot, View.ALPHA, 1.0f, 0.2f);
+        pulse.setDuration(1000);
+        pulse.setRepeatMode(ValueAnimator.REVERSE);
+        pulse.setRepeatCount(ValueAnimator.INFINITE);
+        pulse.start();
     }
 
-    private void animateBarForcefully(final View bar, float percentage) {
-        if (bar == null) return;
+    private void startPolling() {
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                fetchFlameData();
+                handler.postDelayed(this, 1000);
+            }
+        }, 1000);
+    }
 
+    private void fetchFlameData() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, apiURL, null,
+                response -> {
+                    try {
+                        // 1 = Fire detected (Full bar), 0 = No fire (Empty bar)
+                        float frontVal = response.getInt("front") == 1 ? 1.0f : 0.01f;
+                        float leftVal = response.getInt("left_side") == 1 ? 1.0f : 0.01f;
+                        float rightVal = response.getInt("right_side") == 1 ? 1.0f : 0.01f;
+
+                        animateBar(barFront, frontVal);
+                        animateBar(barLeft, leftVal);
+                        animateBar(barRight, rightVal);
+                    } catch (Exception e) { e.printStackTrace(); }
+                }, error -> {});
+        requestQueue.add(request);
+    }
+
+    private void animateBar(final View bar, float percentage) {
         View container = (View) bar.getParent();
-        int maxWidth = container.getWidth();
-        int targetWidth = (int) (maxWidth * percentage);
+        int targetWidth = (int) (container.getWidth() * percentage);
+        if (targetWidth == bar.getWidth()) return;
 
-        ValueAnimator anim = ValueAnimator.ofInt(1, targetWidth);
-        anim.setDuration(1500);
+        ValueAnimator anim = ValueAnimator.ofInt(bar.getWidth(), targetWidth);
+        anim.setDuration(500);
         anim.setInterpolator(new DecelerateInterpolator());
-
         anim.addUpdateListener(animation -> {
-            int val = (int) animation.getAnimatedValue();
-            android.view.ViewGroup.LayoutParams params = bar.getLayoutParams();
-            params.width = val;
-            bar.setLayoutParams(params);
+            bar.getLayoutParams().width = (int) animation.getAnimatedValue();
             bar.requestLayout();
         });
         anim.start();
     }
 
-    private void setupClickListeners() {
-        if (backButton != null) backButton.setOnClickListener(v -> finish());
-
-        // Added Map navigation logic
-        if (mapIcon != null) {
-            mapIcon.setOnClickListener(v -> {
-                startActivity(new Intent(this, MapActivity.class));
-                finish();
-            });
-        }
-
-        fireIcon.setOnClickListener(v -> { startActivity(new Intent(this, FireExtinguisherMonitoringActivity.class)); finish(); });
-        batteryIcon.setOnClickListener(v -> { startActivity(new Intent(this, BatteryActivity.class)); finish(); });
-        historyIcon.setOnClickListener(v -> { startActivity(new Intent(this, HistoryActivity.class)); finish(); });
-        chatIcon.setOnClickListener(v -> { startActivity(new Intent(this, ChatActivity.class)); finish(); });
-        logsIcon.setOnClickListener(v -> { startActivity(new Intent(this, LogsActivity.class)); finish(); });
-        profileIcon.setOnClickListener(v -> { startActivity(new Intent(this, ProfileActivity.class)); finish(); });
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacksAndMessages(null); // Stop polling when activity closes
     }
 }

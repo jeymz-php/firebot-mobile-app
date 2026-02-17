@@ -10,8 +10,8 @@ import android.widget.ImageView;
 
 public class HistoryActivity extends AppCompatActivity {
 
-    // Added mapIcon to the view list
-    View liveIcon, fireIcon, batteryIcon, historyIcon, chatIcon, logsIcon, mapIcon, profileIcon;
+    // Removed fireIcon and batteryIcon from variable list
+    View liveIcon, historyIcon, chatIcon, logsIcon, mapIcon, profileIcon;
     ImageView backButton, notificationButton;
 
     @Override
@@ -19,12 +19,10 @@ public class HistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-        // HIDE THE ACTION BAR
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
 
-        // Header Buttons
         backButton = findViewById(R.id.backButton);
         notificationButton = findViewById(R.id.notificationButton);
 
@@ -32,7 +30,6 @@ public class HistoryActivity extends AppCompatActivity {
             backButton.setOnClickListener(v -> finish());
         }
 
-        // notif bottom sheet
         if (notificationButton != null) {
             notificationButton.setOnClickListener(v -> {
                 NotificationsBottomSheetDialogFragment bottomSheet = new NotificationsBottomSheetDialogFragment();
@@ -40,35 +37,24 @@ public class HistoryActivity extends AppCompatActivity {
             });
         }
 
-        // nav bottom - Initialize all 8 buttons
+        // Initialize remaining 6 buttons only
         liveIcon = findViewById(R.id.nav_monitoring);
-        fireIcon = findViewById(R.id.nav_fire);
-        batteryIcon = findViewById(R.id.nav_battery);
         historyIcon = findViewById(R.id.nav_history);
         chatIcon = findViewById(R.id.nav_chat);
         logsIcon = findViewById(R.id.nav_logs);
-        mapIcon = findViewById(R.id.nav_map); // Initialized Map
+        mapIcon = findViewById(R.id.nav_map);
         profileIcon = findViewById(R.id.nav_profile);
 
         // --- NAVIGATION LOGIC ---
-
         liveIcon.setOnClickListener(v -> {
             startActivity(new Intent(this, LiveMonitoringActivity.class));
             finish();
         });
 
-        fireIcon.setOnClickListener(v -> {
-            startActivity(new Intent(this, FireExtinguisherMonitoringActivity.class));
-            finish();
-        });
-
-        batteryIcon.setOnClickListener(v -> {
-            startActivity(new Intent(this, BatteryActivity.class));
-            finish();
-        });
+        // Removed fireIcon and batteryIcon listeners
 
         historyIcon.setOnClickListener(v -> {
-            // nasa screen na, no need action
+            // Already on this screen
         });
 
         chatIcon.setOnClickListener(v -> {
@@ -81,7 +67,6 @@ public class HistoryActivity extends AppCompatActivity {
             finish();
         });
 
-        // ADDED MAP NAVIGATION
         if (mapIcon != null) {
             mapIcon.setOnClickListener(v -> {
                 startActivity(new Intent(this, MapActivity.class));
@@ -94,7 +79,6 @@ public class HistoryActivity extends AppCompatActivity {
             finish();
         });
 
-        // for the DialogFragment
         setupCardClickListeners();
     }
 
